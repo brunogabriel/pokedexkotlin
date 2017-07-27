@@ -17,7 +17,6 @@ This project is structured by using some basic libraries and tools:
 	- Raleway (fonts)
 
 ## Showcase
----
 <p align="center">
   <img src="Screenshot/list.png" width=200>
 </p>
