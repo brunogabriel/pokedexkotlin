@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="material_default_space">16dp</dimen>
+    <dimen name="material_default_semi_space">8dp</dimen>
+</resources>

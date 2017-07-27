@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RalewayRegular" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="fontPath">Raleway/Raleway-Regular.ttf</item>
+    </style>
+
+    <style name="RalewayMedium" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="fontPath">Raleway/Raleway-Medium.ttf</item>
+    </style>
+
+</resources>
