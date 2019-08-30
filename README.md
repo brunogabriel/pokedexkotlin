@@ -1,22 +1,8 @@
 # Pokedex Kotlin
 
-A very simple example using Kotlin and consuming pokeapi.co to produce a very small Pokedex to list 251 Pokémons.
+I returned to code in this repository because I want to make some changes in architecture. So by now considering in development.
 
-Thank you Nintendo by produce a good game since 1996, pokecoapi and used libraries.
+Thank you Nintendo by produce a good game since 1996, pokecoapi and libraries that I'll use.
 
 ## Requirements
-
-This project is structured by using some basic libraries and tools:
-	- OKHttp
-	- Retrofit
-	- Calligraphy
-	- RxAndroid
-	- RxJava
-	- Picasso
-	- Chuck
-	- Raleway (fonts)
-
-## Showcase
-<p align="center">
-  <img src="Screenshot/list.png" width=200>
-</p>
+???
