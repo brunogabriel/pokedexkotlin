@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.shared.adapter.PokemonListAdapter
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.toDP
-import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonResumed
-import io.github.brunogabriel.pokedexkotlin.shared.view.PokemonCardItemDecoration
+import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
+import io.github.brunogabriel.pokedexkotlin.shared.networking.PokemonService
+import io.github.brunogabriel.pokedexkotlin.shared.networking.RetrofitManager
+import io.github.brunogabriel.pokedexkotlin.shared.view.ColumnSpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -18,8 +20,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : Fragment(), HomeContract.View {
 
-
     override lateinit var presenter: HomeContract.Presenter
+    private val pokemonListAdapter = PokemonListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,14 +33,17 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showPokemons((0..10).map { PokemonResumed("Charmander", "https://pokeapi.co/api/v2/pokemon/$it/") })
-    }
-
-    override fun showPokemons(pokemons: List<PokemonResumed>) {
         recycler_view_pokemon_list.apply {
-            adapter = PokemonListAdapter(pokemons)
-            addItemDecoration(PokemonCardItemDecoration(8.toDP(), (layoutManager as GridLayoutManager).spanCount))
+            adapter = pokemonListAdapter
+            addItemDecoration(ColumnSpaceItemDecoration(8.toDP(),(layoutManager as GridLayoutManager).spanCount))
+        }
+        presenter = HomePresenter(this,
+            RetrofitManager.createService(PokemonService::class.java)).apply {
+            initialize()
         }
     }
 
+    override fun showPokemons(pokemons: List<Pokemon>) {
+        pokemonListAdapter.insertItems(pokemons)
+    }
 }

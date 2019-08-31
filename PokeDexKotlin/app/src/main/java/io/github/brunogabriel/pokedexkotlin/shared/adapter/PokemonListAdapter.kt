@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.inflate
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.loadImage
-import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonResumed
+import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import kotlinx.android.synthetic.main.holder_pokemon.view.*
 
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class PokemonListAdapter(private val pokemons: List<PokemonResumed>) : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
+class PokemonListAdapter : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(), RecyclerViewAdapterContract<Pokemon> {
+    var pokemons: MutableList<Pokemon> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PokemonViewHolder(parent.inflate(R.layout.holder_pokemon))
@@ -23,12 +24,33 @@ class PokemonListAdapter(private val pokemons: List<PokemonResumed>) : RecyclerV
         holder.bind(pokemons[position])
     }
 
+    override fun insertItems(items: List<Pokemon>) {
+        if (items.isNotEmpty()) {
+            val sizeBeforeInsertNewItems = pokemons.size
+            pokemons.addAll(items)
+            notifyItemRangeInserted(sizeBeforeInsertNewItems, items.size)
+        }
+    }
+
+    override fun updateItemAtPosition(newItem: Pokemon, position: Int) {
+        if (pokemons.size > position) {
+            pokemons[position] = newItem
+            notifyItemChanged(position)
+        }
+    }
+
+    override fun removeItemAtPosition(position: Int) {
+        if (pokemons.size > position) {
+            pokemons.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(pokemonResumed: PokemonResumed) = with(itemView) {
-            val pokemonNumber = pokemonResumed.findNumber()
-            pokemon_name_text.text = pokemonResumed.name
-            pokemon_number_text.text = "#$pokemonNumber"
-            pokemon_image.loadImage(pokemonResumed.findSpriteUrl(pokemonNumber))
+        fun bind(pokemon: Pokemon) = with(itemView) {
+            pokemon_name_text.text = pokemon.name?.capitalize()
+            pokemon_number_text.text = "${pokemon.number ?: "??"}"
+            pokemon_image.loadImage(pokemon.findSpriteUrl()) // TODO: make image caching
         }
     }
 }

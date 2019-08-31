@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class PokemonCardItemDecoration(private val space: Int,
+class ColumnSpaceItemDecoration(private val space: Int,
                                 private val spanCount: Int) : RecyclerView.ItemDecoration() {
     private val spaceBySpan = space / spanCount
     override fun getItemOffsets(
