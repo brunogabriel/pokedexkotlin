@@ -5,10 +5,15 @@ import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 
 interface HomeContract {
     interface View : BaseView<Presenter> {
-        fun showPokemons(pokemons: List<Pokemon>)
+        fun showPokemonList(pokemonList: List<Pokemon>)
+        fun showLoading()
+        fun dismissLoading()
+        fun showEmptyList()
+        fun showError()
     }
 
     interface Presenter {
         fun initialize()
+        fun onDestroyView()
     }
 }

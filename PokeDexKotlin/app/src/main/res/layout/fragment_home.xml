@@ -18,4 +18,8 @@
         app:spanCount="3"
         tools:listitem="@layout/holder_pokemon" />
 
+    <include
+        android:visibility="gone"
+        layout="@layout/view_loading"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

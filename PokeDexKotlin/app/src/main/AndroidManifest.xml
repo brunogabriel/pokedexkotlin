@@ -16,9 +16,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <!-- TODO remove?? -->
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".details.PokemonDetailsActivity" android:label=""/>
     </application>
 </manifest>
