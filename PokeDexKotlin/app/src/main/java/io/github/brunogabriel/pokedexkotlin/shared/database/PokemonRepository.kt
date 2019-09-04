@@ -16,4 +16,12 @@ class PokemonRepository : RealmRepository<Pokemon>() {
                 ?.let { realm.copyFromRealm(it) }
         }
     }
+
+    fun findFavorites(): List<Pokemon> {
+        return Realm.getDefaultInstance().use {  realm ->
+            realm.where(Pokemon::class.java)
+                .equalTo("favorite", true)
+                .findAll().let { realm.copyFromRealm(it) }
+        }
+    }
 }

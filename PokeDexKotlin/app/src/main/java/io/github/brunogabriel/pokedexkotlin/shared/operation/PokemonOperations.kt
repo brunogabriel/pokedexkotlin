@@ -45,4 +45,8 @@ class PokemonOperations(
                 }
         }
     }
+
+    fun saveOrUpdate(pokemon: Pokemon) = repository.saveEntity(pokemon)
+
+    fun findFavorites() = repository.findFavorites()
 }

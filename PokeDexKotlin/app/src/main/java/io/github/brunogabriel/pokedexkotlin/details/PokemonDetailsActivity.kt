@@ -9,8 +9,6 @@ import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.shared.database.PokemonRepository
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.loadImage
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
-
-
 /**
  * Created by brunogabriel on 2019-09-01.
  */

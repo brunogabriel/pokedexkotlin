@@ -1,5 +1,6 @@
 package io.github.brunogabriel.pokedexkotlin.main.home
 
+import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.operation.PokemonOperations
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,6 +14,12 @@ class HomePresenter(private val view: HomeContract.View,
                     private val pokemonOperations: PokemonOperations = PokemonOperations(),
                     private val subscriberScheduler: Scheduler = Schedulers.io(),
                     private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()) : HomeContract.Presenter {
+
+    override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
+        pokemon.favorite = !pokemon.favorite
+        pokemonOperations.saveOrUpdate(pokemon)
+        view.updatePokemonAtPosition(pokemon, position)
+    }
 
     private val compositeDisposable = CompositeDisposable()
 

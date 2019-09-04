@@ -10,10 +10,12 @@ interface HomeContract {
         fun dismissLoading()
         fun showEmptyList()
         fun showError()
+        fun updatePokemonAtPosition(pokemon: Pokemon, position: Int)
     }
 
     interface Presenter {
         fun initialize()
         fun onDestroyView()
+        fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int)
     }
 }

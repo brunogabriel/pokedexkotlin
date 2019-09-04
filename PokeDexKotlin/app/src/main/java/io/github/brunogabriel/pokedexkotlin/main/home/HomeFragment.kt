@@ -24,10 +24,12 @@ import kotlinx.android.synthetic.main.view_loading.*
 class HomeFragment : Fragment(), HomeContract.View {
 
     override lateinit var presenter: HomeContract.Presenter
-    private val pokemonListAdapter = PokemonListAdapter { pokemon, _ ->
-        startActivity(Intent(activity, PokemonDetailsActivity::class.java)
-            .putExtra(POKEMON_NUMBER, pokemon.number))
-    }
+    private val pokemonListAdapter = PokemonListAdapter( { pokemon, _ ->
+            startActivity(Intent(activity, PokemonDetailsActivity::class.java).putExtra(
+                POKEMON_NUMBER, pokemon.number))
+    }, { pokemon, position ->
+        presenter.onPokemonFavoriteAction(pokemon, position)
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,6 +68,10 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun showError() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updatePokemonAtPosition(pokemon: Pokemon, position: Int) {
+        pokemonListAdapter.updateItemAtPosition(pokemon, position)
     }
 
     override fun onDestroyView() {

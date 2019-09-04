@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.palette.graphics.Palette
+import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
@@ -18,22 +19,31 @@ import java.lang.Exception
 fun ViewGroup.inflate(resource: Int, attachRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(resource, this, attachRoot)
 }
-
-
 fun ImageView.loadImage(url: String?, asyncPalette: ((Palette?) -> Unit)? = null) {
-    Picasso.get()
-        .load(url)
-        .networkPolicy(NetworkPolicy.OFFLINE, NetworkPolicy.NO_CACHE)
-        .into(object : Target {
+    if (asyncPalette != null) {
+        val target = object : Target {
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
             override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 this@loadImage.setImageBitmap(bitmap)
-                if (asyncPalette != null && bitmap != null) {
-                    Palette.from(bitmap!!).generate {
-                        asyncPalette(it)
-                    }
-                }
+                bitmap?.let { Palette.from(bitmap).generate { asyncPalette(it) } }
             }
+        }
+        Picasso.get()
+            .load(url)
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .into(target)
+        tag = target
+    } else {
+        Picasso.get()
+            .load(url)
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .into(this, object : Callback {
+                override fun onSuccess() {}
+                override fun onError(e: Exception?) {
+                    Picasso.get().load(url).into(this@loadImage)
+                }
         })
+    }
+
 }

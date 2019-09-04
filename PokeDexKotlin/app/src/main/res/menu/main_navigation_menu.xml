@@ -7,10 +7,5 @@
     <item
         android:id="@+id/favorites_item"
         android:title="@string/favorites"
-        android:icon="@drawable/ic_heart" />
-
-    <item
-        android:id="@+id/menu_item"
-        android:title="@string/menu"
-        android:icon="@drawable/ic_menu"/>
+        android:icon="@drawable/ic_favorite_border" />
 </menu>
