@@ -6,3 +6,6 @@ Thank you Nintendo by produce a good game since 1996, pokecoapi and libraries th
 
 ## Requirements
 ???
+
+## Status
+In development
