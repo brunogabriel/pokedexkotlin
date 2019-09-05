@@ -10,7 +10,6 @@ class DatabaseMigration : RealmMigration {
     companion object {
         const val DATABASE_VERSION = 1L
     }
-
     override fun migrate(realm: DynamicRealm, oldVersion: Long, newVersion: Long) {
         // TODO: when database changes
     }

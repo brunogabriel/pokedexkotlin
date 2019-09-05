@@ -63,6 +63,7 @@
             android:layout_height="40dp"
             android:padding="8dp"
             android:layout_marginTop="16dp"
+            android:elevation="4dp"
             android:layout_marginEnd="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/ic_favorite_border"

@@ -19,6 +19,7 @@ import java.lang.Exception
 fun ViewGroup.inflate(resource: Int, attachRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(resource, this, attachRoot)
 }
+
 fun ImageView.loadImage(url: String?, asyncPalette: ((Palette?) -> Unit)? = null) {
     if (asyncPalette != null) {
         val target = object : Target {
@@ -45,5 +46,4 @@ fun ImageView.loadImage(url: String?, asyncPalette: ((Palette?) -> Unit)? = null
                 }
         })
     }
-
 }

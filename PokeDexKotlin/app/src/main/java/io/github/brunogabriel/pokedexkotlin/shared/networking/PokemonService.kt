@@ -1,9 +1,11 @@
 package io.github.brunogabriel.pokedexkotlin.shared.networking
 
+import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonServiceResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -12,4 +14,7 @@ import retrofit2.http.Query
 interface PokemonService {
     @GET("pokemon/")
     fun findPokemons(@Query("limit") limit: Int = 251): Observable<Response<PokemonServiceResponse>>
+
+    @GET("pokemon/{id}")
+    fun findPokemonById(@Path("id") id: Long): Observable<Response<Pokemon>>
 }

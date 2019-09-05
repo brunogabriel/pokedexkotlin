@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentPagerAdapter
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class BottomPageAdapter(private val fragments: List<Fragment>,
-                        fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class BottomPageAdapter(private val fragments: List<Fragment>, fragmentManager: FragmentManager
+) : FragmentPagerAdapter(fragmentManager) {
     override fun getItem(position: Int) = fragments[position]
     override fun getCount() = fragments.size
 }

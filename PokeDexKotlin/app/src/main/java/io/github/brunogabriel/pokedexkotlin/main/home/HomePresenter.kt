@@ -17,7 +17,7 @@ class HomePresenter(private val view: HomeContract.View,
 
     override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
         pokemon.favorite = !pokemon.favorite
-        pokemonOperations.saveOrUpdate(pokemon)
+        pokemonOperations.saveOrUpdatePokemon(pokemon)
         view.updatePokemonAtPosition(pokemon, position)
     }
 

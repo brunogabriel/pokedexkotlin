@@ -22,7 +22,9 @@ class PokemonOperations(
 
     private fun findPokemonNumber(pokemon: Pokemon) = regex.find(pokemon.url ?: "")?.destructured?.component1()?.toLong()
 
-    private fun isValidResponse(response: Response<PokemonServiceResponse>) = response.isSuccessful && response.body()?.results != null
+    private fun isValidPokemonServiceResponse(response: Response<PokemonServiceResponse>) = response.isSuccessful && response.body()?.results != null
+
+    private fun isValidPokemonResponse(response: Response<Pokemon>) = response.isSuccessful && response.body() != null
 
     fun findPokemonList(): Observable<List<Pokemon>> {
         val pokemonList = repository.findAll(Pokemon::class.java)
@@ -31,12 +33,12 @@ class PokemonOperations(
         } else {
             pokemonService.findPokemons()
                 .doOnNext { response ->
-                    if (isValidResponse(response)) {
+                    if (isValidPokemonServiceResponse(response)) {
                         response.body()!!.results.forEach { it.number = findPokemonNumber(it) }
                     }
                 }
                 .flatMap { response ->
-                    return@flatMap if (isValidResponse(response)) {
+                    return@flatMap if (isValidPokemonServiceResponse(response)) {
                         repository.saveAll(response.body()!!.results)
                         Observable.just(response.body()!!.results)
                     } else {
@@ -46,7 +48,31 @@ class PokemonOperations(
         }
     }
 
-    fun saveOrUpdate(pokemon: Pokemon) = repository.saveEntity(pokemon)
+    fun findPokemonDetails(number: Long): Observable<Pokemon> {
+        val pokemon = findPokemon(number)!!
+        if (pokemon.hasDetails()) {
+            return Observable.just(pokemon)
+        } else {
+            return pokemonService.findPokemonById(number)
+                .doOnNext { response ->
+                    if (isValidPokemonResponse(response)) {
+                        pokemon.height = response.body()!!.height
+                        pokemon.sprites = response.body()!!.sprites
+                        repository.saveEntity(pokemon)
+                    }
+                }.flatMap { response ->
+                    return@flatMap if (isValidPokemonResponse(response)) {
+                        Observable.just(pokemon)
+                    } else {
+                        Observable.error(NetworkErrorException("Fail getting pokemon details from API"))
+                    }
+                }
+        }
+    }
 
-    fun findFavorites() = repository.findFavorites()
+    fun findPokemon(number: Long) = repository.findByNumber(number)
+
+    fun saveOrUpdatePokemon(pokemon: Pokemon) = repository.saveEntity(pokemon)
+
+    fun findFavoritePokemons() = repository.findFavorites()
 }

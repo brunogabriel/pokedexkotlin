@@ -1,5 +1,6 @@
 package io.github.brunogabriel.pokedexkotlin.shared.adapter
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -49,7 +50,8 @@ class PokemonListAdapter(private val onClickCardAction: (pokemon: Pokemon, posit
     }
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(pokemon: Pokemon) = with(itemView) {
+        @SuppressLint("DefaultLocale")
+        fun bind(pokemon: Pokemon): View = with(itemView) {
             pokemon_name_text.text = pokemon.name?.capitalize()
             pokemon_number_text.text = "${pokemon.number ?: "??"}"
             pokemon_image.loadImage(pokemon.findSpriteUrl())
