@@ -18,9 +18,34 @@ open class Pokemon(
     var favorite: Boolean = false
 ) : RealmModel {
     companion object {
-        private const val SPRITE_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+        const val SPRITE_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     }
     fun findSpriteUrl() = "$SPRITE_BASE_URL$number.png"
 
     fun hasDetails() = height != null && sprites != null
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Pokemon
+
+        if (number != other.number) return false
+        if (name != other.name) return false
+        if (url != other.url) return false
+        if (height != other.height) return false
+        if (sprites != other.sprites) return false
+        if (favorite != other.favorite) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = number?.hashCode() ?: 0
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + (url?.hashCode() ?: 0)
+        result = 31 * result + (height ?: 0)
+        result = 31 * result + (sprites?.hashCode() ?: 0)
+        result = 31 * result + favorite.hashCode()
+        return result
+    }
 }

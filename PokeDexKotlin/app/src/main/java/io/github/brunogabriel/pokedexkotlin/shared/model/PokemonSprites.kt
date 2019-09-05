@@ -13,4 +13,26 @@ open class PokemonSprites(
     @field:Json(name = "back_shiny") var backShiny: String? = null,
     @field:Json(name = "front_default") var frontDefault: String? = null,
     @field:Json(name = "front_shiny") var frontShiny: String? = null
-) : RealmModel
+) : RealmModel {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as PokemonSprites
+
+        if (backDefault != other.backDefault) return false
+        if (backShiny != other.backShiny) return false
+        if (frontDefault != other.frontDefault) return false
+        if (frontShiny != other.frontShiny) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = backDefault?.hashCode() ?: 0
+        result = 31 * result + (backShiny?.hashCode() ?: 0)
+        result = 31 * result + (frontDefault?.hashCode() ?: 0)
+        result = 31 * result + (frontShiny?.hashCode() ?: 0)
+        return result
+    }
+}
