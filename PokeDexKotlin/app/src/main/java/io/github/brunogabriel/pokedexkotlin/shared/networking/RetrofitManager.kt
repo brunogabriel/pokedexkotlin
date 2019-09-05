@@ -16,9 +16,11 @@ object RetrofitManager {
     private const val READ_TIMEOUT = 120L
     private const val CONNECT_TIMEOUT = 60L
     private lateinit var retrofit: Retrofit
+    private lateinit var okHttpClient: OkHttpClient
+
     fun initialize(context: Context, baseUrl: String = BuildConfig.BASE_URL) {
         if (!::retrofit.isInitialized) {
-            val okHttpClient = OkHttpClient.Builder()
+            okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(ChuckInterceptor(context))
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -32,6 +34,16 @@ object RetrofitManager {
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
         }
+    }
+
+    fun changeBaseUrl(baseUrl: String) {
+        retrofit = Retrofit
+            .Builder()
+            .client(okHttpClient)
+            .baseUrl(baseUrl)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
     }
 
     fun <T>createService(serviceClazz: Class<T>) = retrofit.create(serviceClazz)!!

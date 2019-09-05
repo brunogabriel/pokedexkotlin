@@ -12,7 +12,7 @@ import retrofit2.http.Query
  * Created by brunogabriel on 2019-08-31.
  */
 interface PokemonService {
-    @GET("pokemon/")
+    @GET("pokemon")
     fun findPokemons(@Query("limit") limit: Int = 251): Observable<Response<PokemonServiceResponse>>
 
     @GET("pokemon/{id}")
