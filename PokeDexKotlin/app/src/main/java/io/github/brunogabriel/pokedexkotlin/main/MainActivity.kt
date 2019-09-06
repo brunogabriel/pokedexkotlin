@@ -29,10 +29,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         view_pager.apply {
             adapter = BottomPageAdapter(
-                listOf(homeFragment, favoritesFragment), supportFragmentManager)
+                listOf(homeFragment, favoritesFragment), supportFragmentManager
+            )
         }
         bottom_navigation_view.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.home_item -> {
                     view_pager.setCurrentItem(0, false)
                     true

@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class ColumnSpaceItemDecoration(private val space: Int,
-                                private val spanCount: Int) : RecyclerView.ItemDecoration() {
+class ColumnSpaceItemDecoration(
+    private val space: Int,
+    private val spanCount: Int
+) : RecyclerView.ItemDecoration() {
     private val spaceBySpan = space / spanCount
     override fun getItemOffsets(
         outRect: Rect,

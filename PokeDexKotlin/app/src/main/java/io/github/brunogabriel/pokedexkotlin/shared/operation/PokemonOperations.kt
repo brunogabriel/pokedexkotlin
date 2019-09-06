@@ -14,17 +14,20 @@ import retrofit2.Response
  */
 class PokemonOperations(
     private val repository: PokemonRepository = PokemonRepository(),
-    private val pokemonService: PokemonService = RetrofitManager.createService(PokemonService::class.java)) {
-
+    private val pokemonService: PokemonService = RetrofitManager.createService(PokemonService::class.java)
+) {
     companion object {
         val regex = """.*[//](\d+)[//]""".toRegex()
     }
 
-    private fun findPokemonNumber(pokemon: Pokemon) = regex.find(pokemon.url ?: "")?.destructured?.component1()?.toLong()
+    private fun findPokemonNumber(pokemon: Pokemon) =
+        regex.find(pokemon.url ?: "")?.destructured?.component1()?.toLong()
 
-    private fun isValidPokemonServiceResponse(response: Response<PokemonServiceResponse>) = response.isSuccessful && response.body()?.results != null
+    private fun isValidPokemonServiceResponse(response: Response<PokemonServiceResponse>) =
+        response.isSuccessful && response.body()?.results != null
 
-    private fun isValidPokemonResponse(response: Response<Pokemon>) = response.isSuccessful && response.body() != null
+    private fun isValidPokemonResponse(response: Response<Pokemon>) =
+        response.isSuccessful && response.body() != null
 
     fun findPokemonList(): Observable<List<Pokemon>> {
         val pokemonList = repository.findAll(Pokemon::class.java)

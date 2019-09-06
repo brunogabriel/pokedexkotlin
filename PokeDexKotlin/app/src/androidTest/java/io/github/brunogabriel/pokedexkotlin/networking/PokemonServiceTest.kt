@@ -33,22 +33,29 @@ class PokemonServiceTest {
     @Test
     fun shouldFindPokemonList() {
         // given
-        val expected = PokemonServiceResponse(1, "anyNext",
-            listOf(Pokemon(name = "charmander")))
-        mockServer.stubFor(get(urlPathEqualTo("/pokemon"))
-            .withQueryParam("limit", equalTo("251"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withBody("{" +
-                        "\"count\": 1," +
-                        "\"next\": \"anyNext\"," +
-                        "\"results\": [" +
-                        "   {" +
-                        "       \"name\": \"charmander\"" +
-                        "   }" +
-                        "]" +
-                        "}")
-            ))
+        val expected = PokemonServiceResponse(
+            1, "anyNext",
+            listOf(Pokemon(name = "charmander"))
+        )
+        mockServer.stubFor(
+            get(urlPathEqualTo("/pokemon"))
+                .withQueryParam("limit", equalTo("251"))
+                .willReturn(
+                    aResponse()
+                        .withStatus(200)
+                        .withBody(
+                            "{" +
+                                    "\"count\": 1," +
+                                    "\"next\": \"anyNext\"," +
+                                    "\"results\": [" +
+                                    "   {" +
+                                    "       \"name\": \"charmander\"" +
+                                    "   }" +
+                                    "]" +
+                                    "}"
+                        )
+                )
+        )
 
         // then
         pokemonService.findPokemons().test()
@@ -60,26 +67,34 @@ class PokemonServiceTest {
     @Test
     fun shouldFindPokemonById() {
         // given
-        val expected = Pokemon(1L, "bulbasaur", "anyUrl", 100,
-            PokemonSprites("back_default", "back_shiny",
-                "front_default", "front_shiny")
+        val expected = Pokemon(
+            1L, "bulbasaur", "anyUrl", 100,
+            PokemonSprites(
+                "back_default", "back_shiny",
+                "front_default", "front_shiny"
+            )
         )
-        mockServer.stubFor(get(urlPathEqualTo("/pokemon/1"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withBody("{" +
-                        "    \"number\": 1," +
-                        "    \"name\": \"bulbasaur\"," +
-                        "    \"url\": \"anyUrl\"," +
-                        "    \"height\": 100," +
-                        "    \"sprites\": {" +
-                        "        \"back_default\": \"back_default\"," +
-                        "        \"back_shiny\": \"back_shiny\"," +
-                        "        \"front_default\": \"front_default\"," +
-                        "        \"front_shiny\": \"front_shiny\"" +
-                        "    }" +
-                        "}")
-            ))
+        mockServer.stubFor(
+            get(urlPathEqualTo("/pokemon/1"))
+                .willReturn(
+                    aResponse()
+                        .withStatus(200)
+                        .withBody(
+                            "{" +
+                                    "\"number\": 1," +
+                                    "\"name\": \"bulbasaur\"," +
+                                    "\"url\": \"anyUrl\"," +
+                                    "\"height\": 100," +
+                                    "\"sprites\": {" +
+                                    "\"back_default\": \"back_default\"," +
+                                    "\"back_shiny\": \"back_shiny\"," +
+                                    "\"front_default\": \"front_default\"," +
+                                    "\"front_shiny\": \"front_shiny\"" +
+                                    "}" +
+                                    "}"
+                        )
+                )
+        )
 
         // then
         pokemonService.findPokemonById(1L).test()

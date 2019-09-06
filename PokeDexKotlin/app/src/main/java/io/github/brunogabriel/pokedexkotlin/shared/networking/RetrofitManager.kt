@@ -46,5 +46,5 @@ object RetrofitManager {
             .build()
     }
 
-    fun <T>createService(serviceClazz: Class<T>) = retrofit.create(serviceClazz)!!
+    fun <T> createService(serviceClazz: Class<T>) = retrofit.create(serviceClazz)!!
 }

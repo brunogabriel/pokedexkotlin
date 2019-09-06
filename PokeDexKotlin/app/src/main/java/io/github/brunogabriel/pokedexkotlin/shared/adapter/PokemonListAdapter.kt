@@ -13,9 +13,11 @@ import kotlinx.android.synthetic.main.holder_pokemon.view.*
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class PokemonListAdapter(private val onClickCardAction: (pokemon: Pokemon, position: Int) -> Unit,
-                         private val onClickFavoriteAction: (pokemon: Pokemon, position: Int) -> Unit
-) : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(), RecyclerViewAdapterContract<Pokemon> {
+class PokemonListAdapter(
+    private val onClickCardAction: (pokemon: Pokemon, position: Int) -> Unit,
+    private val onClickFavoriteAction: (pokemon: Pokemon, position: Int) -> Unit
+) : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(),
+    RecyclerViewAdapterContract<Pokemon> {
     var pokemonList: MutableList<Pokemon> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -59,12 +61,19 @@ class PokemonListAdapter(private val onClickCardAction: (pokemon: Pokemon, posit
                 onClickCardAction(pokemonList[adapterPosition], adapterPosition)
             }
             pokemon_favorite_image.apply {
-                setImageResource(if (pokemon.favorite) {
-                    R.drawable.ic_favorite
-                } else {
-                    R.drawable.ic_favorite_border
-                })
-                setOnClickListener { onClickFavoriteAction(pokemonList[adapterPosition], adapterPosition)  }
+                setImageResource(
+                    if (pokemon.favorite) {
+                        R.drawable.ic_favorite
+                    } else {
+                        R.drawable.ic_favorite_border
+                    }
+                )
+                setOnClickListener {
+                    onClickFavoriteAction(
+                        pokemonList[adapterPosition],
+                        adapterPosition
+                    )
+                }
             }
         }
     }

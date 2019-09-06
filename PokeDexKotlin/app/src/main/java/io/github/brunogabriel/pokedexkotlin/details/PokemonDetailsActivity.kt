@@ -19,6 +19,7 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
     companion object {
         const val POKEMON_NUMBER = "POKEMON_NUMBER"
     }
+
     override lateinit var presenter: PokemonDetailsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +31,8 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
         }
         presenter =
             PokemonDetailsPresenter(this, intent.extras.getLong(POKEMON_NUMBER, 0L)).apply {
-            initialize()
-        }
+                initialize()
+            }
     }
 
     @SuppressLint("DefaultLocale")
@@ -40,7 +41,6 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
             val vibrantRgb = palette?.vibrantSwatch?.rgb
             val dominantRgb = palette?.dominantSwatch?.rgb
             val lightVibrantRgb = palette?.lightVibrantSwatch?.rgb
-
             if (vibrantRgb != null) {
                 root_view.setBackgroundColor(vibrantRgb)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -49,20 +49,26 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
                     window.statusBarColor = vibrantRgb
                 }
             }
-             toolbar.apply {
-                 setSupportActionBar(this)
-                 toolbar.navigationIcon = getDrawable(R.drawable.ic_close)?.apply {
-                     val toolbarIconColor = if (dominantRgb != vibrantRgb) {
-                         dominantRgb ?: 0
-                     } else {
-                         lightVibrantRgb ?: 0
-                     }
-                     setColorFilter(toolbarIconColor, PorterDuff.Mode.SRC_ATOP)
-                     setNavigationOnClickListener { onBackPressed() }
-                 }
-             }
+            toolbar.apply {
+                setSupportActionBar(this)
+                toolbar.navigationIcon = getDrawable(R.drawable.ic_close)?.apply {
+                    val toolbarIconColor = if (dominantRgb != vibrantRgb) {
+                        dominantRgb ?: 0
+                    } else {
+                        lightVibrantRgb ?: 0
+                    }
+                    setColorFilter(toolbarIconColor, PorterDuff.Mode.SRC_ATOP)
+                    setNavigationOnClickListener { onBackPressed() }
+                }
+            }
         }
-        pokemon_name_text.text =  String.format(getString(R.string.pokemon_details_name_pattern, number, name?.capitalize()))
+        pokemon_name_text.text = String.format(
+            getString(
+                R.string.pokemon_details_name_pattern,
+                number,
+                name?.capitalize()
+            )
+        )
     }
 
     override fun showPokemonDetails(pokemon: Pokemon) {
@@ -70,8 +76,10 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
         pokemon_back_shiny_image.visibility = View.VISIBLE
         pokemon_front_shiny_image.visibility = View.VISIBLE
 
-        pokemon_height_text.text = getString(R.string.pokemon_details_height_pattern,
-            pokemon.height ?: 0)
+        pokemon_height_text.text = getString(
+            R.string.pokemon_details_height_pattern,
+            pokemon.height ?: 0
+        )
         pokemon_back_shiny_image.loadImage(pokemon.sprites?.backShiny)
         pokemon_front_shiny_image.loadImage(pokemon.sprites?.frontShiny)
     }

@@ -7,7 +7,6 @@ import io.realm.Realm
  * Created by brunogabriel on 2019-09-01.
  */
 class PokemonRepository : RealmRepository<Pokemon>() {
-
     fun findByNumber(number: Long): Pokemon? {
         return Realm.getDefaultInstance().use { realm ->
             realm.where(Pokemon::class.java)
@@ -18,7 +17,7 @@ class PokemonRepository : RealmRepository<Pokemon>() {
     }
 
     fun findFavorites(): List<Pokemon> {
-        return Realm.getDefaultInstance().use {  realm ->
+        return Realm.getDefaultInstance().use { realm ->
             realm.where(Pokemon::class.java)
                 .equalTo("favorite", true)
                 .findAll().let { realm.copyFromRealm(it) }

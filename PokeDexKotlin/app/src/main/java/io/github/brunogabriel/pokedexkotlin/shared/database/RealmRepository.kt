@@ -4,12 +4,10 @@ import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmObject
 
-
 /**
  * Created by brunogabriel on 2019-09-01.
  */
-open class RealmRepository<T: RealmModel> {
-    
+open class RealmRepository<T : RealmModel> {
     fun saveEntity(entity: T) {
         Realm.getDefaultInstance().use { realm ->
             realm.beginTransaction()

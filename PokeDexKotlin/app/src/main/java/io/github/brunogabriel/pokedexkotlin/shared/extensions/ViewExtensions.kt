@@ -44,6 +44,6 @@ fun ImageView.loadImage(url: String?, asyncPalette: ((Palette?) -> Unit)? = null
                 override fun onError(e: Exception?) {
                     Picasso.get().load(url).into(this@loadImage)
                 }
-        })
+            })
     }
 }

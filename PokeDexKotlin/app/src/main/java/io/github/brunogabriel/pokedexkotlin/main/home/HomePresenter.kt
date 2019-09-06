@@ -10,10 +10,12 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by brunogabriel on 2019-08-31.
  */
-class HomePresenter(private val view: HomeContract.View,
-                    private val pokemonOperations: PokemonOperations = PokemonOperations(),
-                    private val subscriberScheduler: Scheduler = Schedulers.io(),
-                    private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()) : HomeContract.Presenter {
+class HomePresenter(
+    private val view: HomeContract.View,
+    private val pokemonOperations: PokemonOperations = PokemonOperations(),
+    private val subscriberScheduler: Scheduler = Schedulers.io(),
+    private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
+) : HomeContract.Presenter {
 
     override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
         pokemon.favorite = !pokemon.favorite
@@ -37,7 +39,8 @@ class HomePresenter(private val view: HomeContract.View,
                 }
             }, {
                 view.showError()
-            }))
+            })
+        )
     }
 
     override fun onDestroyView() {

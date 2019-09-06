@@ -18,8 +18,10 @@ open class Pokemon(
     var favorite: Boolean = false
 ) : RealmModel {
     companion object {
-        const val SPRITE_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+        const val SPRITE_BASE_URL =
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     }
+
     fun findSpriteUrl() = "$SPRITE_BASE_URL$number.png"
 
     fun hasDetails() = height != null && sprites != null

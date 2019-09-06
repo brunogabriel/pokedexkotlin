@@ -10,11 +10,12 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by brunogabriel on 2019-09-04.
  */
-class PokemonDetailsPresenter(private val view: PokemonDetailsContract.View,
-                              private val pokemonNumber: Long,
-                              private val pokemonOperations: PokemonOperations = PokemonOperations(),
-                              private val subscriberScheduler: Scheduler = Schedulers.io(),
-                              private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
+class PokemonDetailsPresenter(
+    private val view: PokemonDetailsContract.View,
+    private val pokemonNumber: Long,
+    private val pokemonOperations: PokemonOperations = PokemonOperations(),
+    private val subscriberScheduler: Scheduler = Schedulers.io(),
+    private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ) : PokemonDetailsContract.Presenter {
 
     // TODO: pokemon hasPokemonChanged need to back to previous activity
@@ -35,7 +36,8 @@ class PokemonDetailsPresenter(private val view: PokemonDetailsContract.View,
                 view.showPokemonDetails(pokemon)
             }, {
                 view.showErrorGettingPokemonDetails()
-            }))
+            })
+        )
     }
 
     override fun onDestroyView() {
