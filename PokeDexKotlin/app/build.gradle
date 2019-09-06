@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.palette:palette-ktx:1.0.0'
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -60,10 +60,11 @@ dependencies {
     testImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
     releaseImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    testImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'com.github.tomakehurst:wiremock-standalone:2.24.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 }
