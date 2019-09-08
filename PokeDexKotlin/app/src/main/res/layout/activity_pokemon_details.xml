@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,14 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/content_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="72dp"
-        android:layout_marginBottom="-56dp"
         android:elevation="2dp"
-        app:cardCornerRadius="56dp"
+        android:foreground="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +40,8 @@
 
                 <TextView
                     android:id="@+id/pokemon_name_text"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -49,7 +51,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="#001 - Charizard" />
+                    tools:text="1 - Charizard" />
 
                 <TextView
                     android:id="@+id/pokemon_height_text"
@@ -64,35 +66,62 @@
                     app:layout_constraintTop_toBottomOf="@+id/pokemon_name_text"
                     tools:text="Height: 300" />
 
+                <TextView
+                    android:id="@+id/pokemon_weight_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_height_text"
+                    tools:text="Weight: 300" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/pokemon_types_chip_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_weight_text"/>
+
                 <ImageView
                     android:id="@+id/pokemon_front_shiny_image"
+                    android:visibility="gone"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/pokemon_image"
                     app:layout_constraintEnd_toStartOf="@+id/pokemon_back_shiny_image"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pokemon_name_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_types_chip_group" />
 
                 <ImageView
                     android:id="@+id/pokemon_back_shiny_image"
+                    android:visibility="gone"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/pokemon_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/pokemon_front_shiny_image"
-                    app:layout_constraintTop_toBottomOf="@+id/pokemon_name_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_types_chip_group"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/pokemon_image"

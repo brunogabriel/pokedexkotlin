@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_pokemon_list"
+        android:id="@+id/recycler_view_pokemon"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="3"
-        tools:listitem="@layout/holder_pokemon" />
+        tools:listitem="@layout/holder_pokemon_grid" />
 
     <include
         android:visibility="gone"

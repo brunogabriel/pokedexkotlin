@@ -1,6 +1,5 @@
 package io.github.brunogabriel.pokedexkotlin.shared.adapter
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,20 +7,17 @@ import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.inflate
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.loadImage
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
-import kotlinx.android.synthetic.main.holder_pokemon.view.*
+import kotlinx.android.synthetic.main.holder_pokemon_list.view.*
 
 /**
- * Created by brunogabriel on 2019-08-29.
+ * Created by brunogabriel on 2019-09-07.
  */
-class PokemonListAdapter(
-    private val onClickCardAction: (pokemon: Pokemon, position: Int) -> Unit,
-    private val onClickFavoriteAction: (pokemon: Pokemon, position: Int) -> Unit
-) : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(),
-    RecyclerViewAdapterContract<Pokemon> {
-    var pokemonList: MutableList<Pokemon> = mutableListOf()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        PokemonViewHolder(parent.inflate(R.layout.holder_pokemon))
+class PokemonListAdapter(private val pokemonList: List<Pokemon>,
+                         private val onClickAction: (pokemon: Pokemon, position: Int) -> Unit ) :
+    RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
+        return PokemonViewHolder(parent.inflate(R.layout.holder_pokemon_list))
+    }
 
     override fun getItemCount() = pokemonList.size
 
@@ -29,52 +25,14 @@ class PokemonListAdapter(
         holder.bind(pokemonList[position])
     }
 
-    override fun insertItems(items: List<Pokemon>) {
-        if (items.isNotEmpty()) {
-            val sizeBeforeInsertNewItems = pokemonList.size
-            pokemonList.addAll(items)
-            notifyItemRangeInserted(sizeBeforeInsertNewItems, items.size)
-        }
-    }
-
-    override fun updateItemAtPosition(newItem: Pokemon, position: Int) {
-        if (pokemonList.size > position) {
-            pokemonList[position] = newItem
-            notifyItemChanged(position)
-        }
-    }
-
-    override fun removeItemAtPosition(position: Int) {
-        if (pokemonList.size > position) {
-            pokemonList.removeAt(position)
-            notifyItemRemoved(position)
-        }
-    }
-
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        @SuppressLint("DefaultLocale")
-        fun bind(pokemon: Pokemon): View = with(itemView) {
+        fun bind(pokemon: Pokemon) = with(itemView) {
+            content_holder.setOnClickListener {
+                onClickAction(pokemonList[adapterPosition], adapterPosition)
+            }
             pokemon_name_text.text = pokemon.name?.capitalize()
-            pokemon_number_text.text = "${pokemon.number ?: "??"}"
+            pokemon_number_text.text = pokemon.number?.toString()
             pokemon_image.loadImage(pokemon.findSpriteUrl())
-            holder_content.setOnClickListener {
-                onClickCardAction(pokemonList[adapterPosition], adapterPosition)
-            }
-            pokemon_favorite_image.apply {
-                setImageResource(
-                    if (pokemon.favorite) {
-                        R.drawable.ic_favorite
-                    } else {
-                        R.drawable.ic_favorite_border
-                    }
-                )
-                setOnClickListener {
-                    onClickFavoriteAction(
-                        pokemonList[adapterPosition],
-                        adapterPosition
-                    )
-                }
-            }
         }
     }
 }

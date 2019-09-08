@@ -8,9 +8,12 @@ import com.nhaarman.mockitokotlin2.check
 import io.github.brunogabriel.pokedexkotlin.shared.database.PokemonRepository
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonServiceResponse
+import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonType
 import io.github.brunogabriel.pokedexkotlin.shared.networking.PokemonService
 import io.reactivex.Observable
+import io.realm.RealmList
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertTrue
 import okhttp3.ResponseBody
 import org.junit.Before
 import org.junit.Test
@@ -57,7 +60,13 @@ class PokemonOperationsTest {
         )
         val pokemonResponse = PokemonServiceResponse(results = pokemonList, count = 2)
         whenever(pokemonRepository.findAll(Pokemon::class.java)).thenReturn(emptyList())
-        whenever(pokemonService.findPokemons()).thenReturn(Observable.just(Response.success(pokemonResponse)))
+        whenever(pokemonService.findPokemons()).thenReturn(
+            Observable.just(
+                Response.success(
+                    pokemonResponse
+                )
+            )
+        )
 
         // when
         val result = pokemonOperations.findPokemonList()
@@ -79,7 +88,13 @@ class PokemonOperationsTest {
         )
         val pokemonResponse = PokemonServiceResponse(results = pokemonList, count = 2)
         whenever(pokemonRepository.findAll(Pokemon::class.java)).thenReturn(emptyList())
-        whenever(pokemonService.findPokemons()).thenReturn(Observable.just(Response.success(pokemonResponse)))
+        whenever(pokemonService.findPokemons()).thenReturn(
+            Observable.just(
+                Response.success(
+                    pokemonResponse
+                )
+            )
+        )
 
         // when
         pokemonOperations.findPokemonList().test().await().dispose()
@@ -138,7 +153,7 @@ class PokemonOperationsTest {
     fun shouldFindPokemonDetails() {
         // given
         val pokemon = mock<Pokemon>()
-        whenever(pokemon.hasDetails()).thenReturn(true)
+        whenever(pokemon.details).thenReturn(true)
         whenever(pokemonRepository.findByNumber(1L)).thenReturn(pokemon)
 
         // when
@@ -153,8 +168,11 @@ class PokemonOperationsTest {
         // given
         val pokemon = Pokemon()
         val pokemonFromService = mock<Pokemon>()
+        val types = mock<RealmList<PokemonType>>()
         whenever(pokemonRepository.findByNumber(1L)).thenReturn(pokemon)
         whenever(pokemonFromService.height).thenReturn(1)
+        whenever(pokemonFromService.weight).thenReturn(2)
+        whenever(pokemonFromService.types).thenReturn(types)
         whenever(pokemonFromService.sprites).thenReturn(mock())
         whenever(pokemonService.findPokemonById(1L))
             .thenReturn(Observable.just(Response.success(pokemonFromService)))
@@ -163,7 +181,9 @@ class PokemonOperationsTest {
         val result = pokemonOperations.findPokemonDetails(1L)
 
         // then
-        result.test().await().assertValue { it.height == 1 && it.sprites == pokemonFromService.sprites }.dispose()
+        result.test().await()
+            .assertValue { it.height == 1 && it.sprites == pokemonFromService.sprites && it.weight == 2 && it.types == types && it.details }
+            .dispose()
     }
 
     @Test
@@ -171,9 +191,12 @@ class PokemonOperationsTest {
         // given
         val pokemon = Pokemon()
         val pokemonFromService = mock<Pokemon>()
+        val types = mock<RealmList<PokemonType>>()
         whenever(pokemonRepository.findByNumber(1L)).thenReturn(pokemon)
         whenever(pokemonFromService.height).thenReturn(1)
         whenever(pokemonFromService.sprites).thenReturn(mock())
+        whenever(pokemonFromService.weight).thenReturn(2)
+        whenever(pokemonFromService.types).thenReturn(types)
         whenever(pokemonService.findPokemonById(1L))
             .thenReturn(Observable.just(Response.success(pokemonFromService)))
 
@@ -184,7 +207,10 @@ class PokemonOperationsTest {
         result.test().await().dispose()
         verify(pokemonRepository).saveEntity(check {
             assertEquals(it.height, pokemonFromService.height)
+            assertEquals(it.weight, pokemonFromService.weight)
             assertEquals(it.sprites, pokemonFromService.sprites)
+            assertEquals(it.types, pokemonFromService.types)
+            assertTrue(it.details)
         })
     }
 

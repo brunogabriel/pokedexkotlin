@@ -6,6 +6,8 @@
     <string name="pokemon_image">Pokémon image</string>
     <string name="loading">Loading…</string>
     <string name="favorite">Favorite</string>
-    <string name="pokemon_details_name_pattern">#%d - %s</string>
+    <string name="pokemon_details_name_pattern">%d - %s</string>
     <string name="pokemon_details_height_pattern">Height: %d</string>
+    <string name="pokemon_details_weight_pattern">Weight: %d</string>
+    <string name="shiny_version">Shiny version</string>
 </resources>

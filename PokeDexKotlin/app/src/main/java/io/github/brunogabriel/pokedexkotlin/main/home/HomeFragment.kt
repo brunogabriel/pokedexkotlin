@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.details.PokemonDetailsActivity
 import io.github.brunogabriel.pokedexkotlin.details.PokemonDetailsActivity.Companion.POKEMON_NUMBER
-import io.github.brunogabriel.pokedexkotlin.shared.adapter.PokemonListAdapter
+import io.github.brunogabriel.pokedexkotlin.shared.adapter.PokemonGridAdapter
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.toDP
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.operation.PokemonOperations
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.view_loading.*
 class HomeFragment : Fragment(), HomeContract.View {
 
     override lateinit var presenter: HomeContract.Presenter
-    private val pokemonListAdapter = PokemonListAdapter( { pokemon, _ ->
+    private val pokemonListAdapter = PokemonGridAdapter( { pokemon, _ ->
             startActivity(Intent(activity, PokemonDetailsActivity::class.java).putExtra(
                 POKEMON_NUMBER, pokemon.number))
     }, { pokemon, position ->
@@ -41,7 +41,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view_pokemon_list.apply {
+        recycler_view_pokemon.apply {
             adapter = pokemonListAdapter
             addItemDecoration(ColumnSpaceItemDecoration(8.toDP(),(layoutManager as GridLayoutManager).spanCount))
         }

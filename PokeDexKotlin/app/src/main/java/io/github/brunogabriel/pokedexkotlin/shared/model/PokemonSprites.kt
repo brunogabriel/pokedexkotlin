@@ -1,6 +1,6 @@
 package io.github.brunogabriel.pokedexkotlin.shared.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 import io.realm.RealmModel
 import io.realm.annotations.RealmClass
 
@@ -9,10 +9,10 @@ import io.realm.annotations.RealmClass
  */
 @RealmClass
 open class PokemonSprites(
-    @field:Json(name = "back_default") var backDefault: String? = null,
-    @field:Json(name = "back_shiny") var backShiny: String? = null,
-    @field:Json(name = "front_default") var frontDefault: String? = null,
-    @field:Json(name = "front_shiny") var frontShiny: String? = null
+    @field:SerializedName("back_default") var backDefault: String? = null,
+    @field:SerializedName("back_shiny") var backShiny: String? = null,
+    @field:SerializedName("front_default") var frontDefault: String? = null,
+    @field:SerializedName("front_shiny") var frontShiny: String? = null
 ) : RealmModel {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

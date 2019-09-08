@@ -17,7 +17,7 @@ class PokemonOperations(
     private val pokemonService: PokemonService = RetrofitManager.createService(PokemonService::class.java)
 ) {
     companion object {
-        val regex = """.*[//](\d+)[//]""".toRegex()
+        val regex = """.*[/](\d+)[/]""".toRegex()
     }
 
     private fun findPokemonNumber(pokemon: Pokemon) =
@@ -53,14 +53,17 @@ class PokemonOperations(
 
     fun findPokemonDetails(number: Long): Observable<Pokemon> {
         val pokemon = findPokemon(number)!!
-        if (pokemon.hasDetails()) {
+        if (pokemon.details) {
             return Observable.just(pokemon)
         } else {
             return pokemonService.findPokemonById(number)
                 .doOnNext { response ->
                     if (isValidPokemonResponse(response)) {
+                        pokemon.details = true
                         pokemon.height = response.body()!!.height
+                        pokemon.weight = response.body()!!.weight
                         pokemon.sprites = response.body()!!.sprites
+                        pokemon.types = response.body()!!.types
                         repository.saveEntity(pokemon)
                     }
                 }.flatMap { response ->

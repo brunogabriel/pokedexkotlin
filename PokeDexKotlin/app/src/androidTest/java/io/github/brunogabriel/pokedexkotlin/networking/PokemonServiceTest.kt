@@ -3,11 +3,10 @@ package io.github.brunogabriel.pokedexkotlin.networking
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.github.tomakehurst.wiremock.junit.WireMockRule
-import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
-import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonServiceResponse
-import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonSprites
+import io.github.brunogabriel.pokedexkotlin.shared.model.*
 import io.github.brunogabriel.pokedexkotlin.shared.networking.PokemonService
 import io.github.brunogabriel.pokedexkotlin.shared.networking.RetrofitManager
+import io.realm.RealmList
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -67,12 +66,16 @@ class PokemonServiceTest {
     @Test
     fun shouldFindPokemonById() {
         // given
+        val types = RealmList<PokemonType>().apply {
+            add(PokemonType(1,  Type("fire")))
+        }
         val expected = Pokemon(
-            1L, "bulbasaur", "anyUrl", 100,
+            1L, "bulbasaur", "anyUrl", 100, 100,
             PokemonSprites(
                 "back_default", "back_shiny",
                 "front_default", "front_shiny"
-            )
+            ),
+            types
         )
         mockServer.stubFor(
             get(urlPathEqualTo("/pokemon/1"))
@@ -81,16 +84,25 @@ class PokemonServiceTest {
                         .withStatus(200)
                         .withBody(
                             "{" +
-                                    "\"number\": 1," +
-                                    "\"name\": \"bulbasaur\"," +
-                                    "\"url\": \"anyUrl\"," +
                                     "\"height\": 100," +
+                                    "\"name\": \"bulbasaur\"," +
+                                    "\"number\": 1," +
                                     "\"sprites\": {" +
-                                    "\"back_default\": \"back_default\"," +
-                                    "\"back_shiny\": \"back_shiny\"," +
-                                    "\"front_default\": \"front_default\"," +
-                                    "\"front_shiny\": \"front_shiny\"" +
-                                    "}" +
+                                        "\"back_default\": \"back_default\"," +
+                                        "\"back_shiny\": \"back_shiny\"," +
+                                        "\"front_default\": \"front_default\"," +
+                                        "\"front_shiny\": \"front_shiny\"" +
+                                    "}," +
+                                    "\"types\": [" +
+                                        "{" +
+                                            "\"slot\": 1," +
+                                            "\"type\": {" +
+                                                "\"name\": \"fire\"" +
+                                            "}" +
+                                        "}" +
+                                    "]," +
+                                    "\"url\": \"anyUrl\"," +
+                                    "\"weight\": 100" +
                                     "}"
                         )
                 )
@@ -99,7 +111,7 @@ class PokemonServiceTest {
         // then
         pokemonService.findPokemonById(1L).test()
             .assertComplete()
-            .assertValue { it.isSuccessful && it.body() == expected }
+            .assertValue { it.isSuccessful && it.body()!! == expected }
             .dispose()
     }
 }

@@ -6,7 +6,7 @@ import io.github.brunogabriel.pokedexkotlin.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -31,7 +31,7 @@ object RetrofitManager {
                 .client(okHttpClient)
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
     }
@@ -42,9 +42,9 @@ object RetrofitManager {
             .client(okHttpClient)
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    fun <T> createService(serviceClazz: Class<T>) = retrofit.create(serviceClazz)!!
+    fun <T> createService(serviceClazz: Class<T>): T = retrofit.create(serviceClazz)
 }
