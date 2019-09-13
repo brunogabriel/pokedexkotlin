@@ -14,8 +14,9 @@ import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.loadImage
 import io.github.brunogabriel.pokedexkotlin.shared.extensions.toDP
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
-import io.github.brunogabriel.pokedexkotlin.shared.model.PokemonType
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
+import kotlinx.android.synthetic.main.view_error_try_again.*
+import kotlinx.android.synthetic.main.view_loading.*
 
 /**
  * Created by brunogabriel on 2019-09-01.
@@ -124,50 +125,37 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
         }
 
         pokemon_types_chip_group.visibility = View.VISIBLE
-        pokemon.types.forEach { pokemonType ->
-            val resource = convertToResource(pokemonType)
-            pokemon_types_chip_group.addView(Chip(pokemon_types_chip_group.context).apply {
-                text = pokemonType?.type?.name
-                if (resource != null) {
-                    chipIcon = getDrawable(resource)
-                }
-                isClickable = false
-                isFocusable = false
-            })
-        }
+
+        pokemon.types
+            .map { it.type }
+            .forEach { pokemonType ->
+                val resource = pokemonType?.findResource()
+                pokemon_types_chip_group.addView(Chip(pokemon_types_chip_group.context).apply {
+                    text = pokemonType?.name
+                    if (resource != null) {
+                        chipIcon = getDrawable(resource)
+                    }
+                    isClickable = false
+                    isFocusable = false
+                })
+            }
     }
 
     override fun showLoading() {
-
+        view_loading.visibility = View.VISIBLE
     }
 
     override fun dismissLoading() {
+        view_loading.visibility = View.GONE
     }
 
     override fun showErrorGettingPokemonDetails() {
-    }
-
-    private fun convertToResource(pokemonType: PokemonType): Int? {
-        return when (pokemonType.type?.name) {
-            "bug" -> R.drawable.bug
-            "dark" -> R.drawable.dark
-            "dragon" -> R.drawable.dragon
-            "electric" -> R.drawable.electric
-            "fairy" -> R.drawable.fairy
-            "fighting" -> R.drawable.fight
-            "fire" -> R.drawable.fire
-            "flying" -> R.drawable.flying
-            "ghost" -> R.drawable.ghost
-            "grass" -> R.drawable.grass
-            "ground" -> R.drawable.ground
-            "ice" -> R.drawable.ic_close
-            "normal" -> R.drawable.normal
-            "poison" -> R.drawable.poison
-            "psychic" -> R.drawable.psychic
-            "rock" -> R.drawable.rock
-            "steel" -> R.drawable.steel
-            "water" -> R.drawable.water
-            else -> null
+        view_error_try_again.apply {
+            visibility = View.VISIBLE
+            try_again_button.setOnClickListener {
+                visibility = View.GONE
+                presenter.initialize()
+            }
         }
     }
 }

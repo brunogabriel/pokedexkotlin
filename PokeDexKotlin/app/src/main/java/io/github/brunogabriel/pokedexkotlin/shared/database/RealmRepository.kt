@@ -10,25 +10,19 @@ import io.realm.RealmObject
 open class RealmRepository<T : RealmModel> {
     fun saveEntity(entity: T) {
         Realm.getDefaultInstance().use { realm ->
-            realm.beginTransaction()
-            realm.insertOrUpdate(entity)
-            realm.commitTransaction()
+            realm.executeTransaction { it.insertOrUpdate(entity) }
         }
     }
 
     fun saveAll(entities: List<T>) {
         Realm.getDefaultInstance().use { realm ->
-            realm.beginTransaction()
-            realm.insertOrUpdate(entities)
-            realm.commitTransaction()
+            realm.executeTransaction { it.insertOrUpdate(entities) }
         }
     }
 
     fun delete(entity: T) {
         Realm.getDefaultInstance().use { realm ->
-            realm.beginTransaction()
-            RealmObject.deleteFromRealm(entity)
-            realm.commitTransaction()
+            realm.executeTransaction { RealmObject.deleteFromRealm(entity) }
         }
     }
 

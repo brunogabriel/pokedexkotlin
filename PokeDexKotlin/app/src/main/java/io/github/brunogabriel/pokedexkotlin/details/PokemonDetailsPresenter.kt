@@ -18,8 +18,6 @@ class PokemonDetailsPresenter(
     private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ) : PokemonDetailsContract.Presenter {
 
-    // TODO: pokemon hasPokemonChanged need to back to previous activity
-
     private lateinit var pokemon: Pokemon
     private val compositeDisposable = CompositeDisposable()
 

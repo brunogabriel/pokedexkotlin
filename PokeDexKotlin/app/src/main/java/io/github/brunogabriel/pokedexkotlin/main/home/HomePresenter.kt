@@ -16,7 +16,6 @@ class HomePresenter(
     private val subscriberScheduler: Scheduler = Schedulers.io(),
     private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ) : HomeContract.Presenter {
-
     override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
         pokemon.favorite = !pokemon.favorite
         pokemonOperations.saveOrUpdatePokemon(pokemon)

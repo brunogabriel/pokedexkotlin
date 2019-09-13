@@ -28,5 +28,4 @@ open class PokemonType(
         result = 31 * result + (type?.hashCode() ?: 0)
         return result
     }
-
 }

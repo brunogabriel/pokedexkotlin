@@ -16,6 +16,8 @@ import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.operation.PokemonOperations
 import io.github.brunogabriel.pokedexkotlin.shared.view.ColumnSpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.view_empty.*
+import kotlinx.android.synthetic.main.view_error_try_again.*
 import kotlinx.android.synthetic.main.view_loading.*
 
 /**
@@ -24,9 +26,12 @@ import kotlinx.android.synthetic.main.view_loading.*
 class HomeFragment : Fragment(), HomeContract.View {
 
     override lateinit var presenter: HomeContract.Presenter
-    private val pokemonListAdapter = PokemonGridAdapter( { pokemon, _ ->
-            startActivity(Intent(activity, PokemonDetailsActivity::class.java).putExtra(
-                POKEMON_NUMBER, pokemon.number))
+    private val pokemonListAdapter = PokemonGridAdapter({ pokemon, _ ->
+        startActivity(
+            Intent(activity, PokemonDetailsActivity::class.java).putExtra(
+                POKEMON_NUMBER, pokemon.number
+            )
+        )
     }, { pokemon, position ->
         presenter.onPokemonFavoriteAction(pokemon, position)
     })
@@ -43,7 +48,12 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onViewCreated(view, savedInstanceState)
         recycler_view_pokemon.apply {
             adapter = pokemonListAdapter
-            addItemDecoration(ColumnSpaceItemDecoration(8.toDP(),(layoutManager as GridLayoutManager).spanCount))
+            addItemDecoration(
+                ColumnSpaceItemDecoration(
+                    8.toDP(),
+                    (layoutManager as GridLayoutManager).spanCount
+                )
+            )
         }
         presenter = HomePresenter(this, PokemonOperations()).apply {
             initialize()
@@ -63,11 +73,17 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun showEmptyList() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view_empty.visibility = View.VISIBLE
     }
 
     override fun showError() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view_error_try_again.apply {
+            visibility = View.VISIBLE
+            try_again_button.setOnClickListener {
+                view_error_try_again.visibility = View.GONE
+                presenter.initialize()
+            }
+        }
     }
 
     override fun updatePokemonAtPosition(pokemon: Pokemon, position: Int) {

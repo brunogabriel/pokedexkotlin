@@ -13,6 +13,7 @@ import io.github.brunogabriel.pokedexkotlin.shared.extensions.toDP
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.view.ColumnSpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.view_empty_favorites.*
 
 /**
  * Created by brunogabriel on 2019-08-29.
@@ -35,7 +36,9 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
     }
 
     override fun showFavorites(pokemonList: List<Pokemon>) {
+        view_favorites.visibility = View.GONE
         recycler_view_pokemon.apply {
+            visibility = View.VISIBLE
             adapter = PokemonListAdapter(pokemonList) { pokemon,_ ->
                 startActivity(
                     Intent(activity, PokemonDetailsActivity::class.java).putExtra(
@@ -51,7 +54,7 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
         }
     }
     override fun showEmptyFavorites() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view_favorites.visibility = View.VISIBLE
+        recycler_view_pokemon.visibility = View.GONE
     }
-
 }

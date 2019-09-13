@@ -53,6 +53,26 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="1 - Charizard" />
 
+                <include
+                    layout="@layout/view_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_name_text" />
+
+                <include
+                    layout="@layout/view_error_try_again"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pokemon_name_text" />
+
                 <TextView
                     android:id="@+id/pokemon_height_text"
                     android:layout_width="0dp"
