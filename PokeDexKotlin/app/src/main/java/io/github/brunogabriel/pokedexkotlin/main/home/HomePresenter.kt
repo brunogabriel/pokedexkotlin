@@ -16,11 +16,6 @@ class HomePresenter(
     private val subscriberScheduler: Scheduler = Schedulers.io(),
     private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ) : HomeContract.Presenter {
-    override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
-        pokemon.favorite = !pokemon.favorite
-        pokemonOperations.saveOrUpdatePokemon(pokemon)
-        view.updatePokemonAtPosition(pokemon, position)
-    }
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -40,6 +35,12 @@ class HomePresenter(
                 view.showError()
             })
         )
+    }
+
+    override fun onPokemonFavoriteAction(pokemon: Pokemon, position: Int) {
+        pokemon.favorite = !pokemon.favorite
+        pokemonOperations.saveOrUpdatePokemon(pokemon)
+        view.updatePokemonAtPosition(pokemon, position)
     }
 
     override fun onDestroyView() {
