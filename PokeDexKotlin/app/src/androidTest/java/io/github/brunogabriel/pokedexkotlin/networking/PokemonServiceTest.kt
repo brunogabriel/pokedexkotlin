@@ -25,7 +25,6 @@ class PokemonServiceTest {
 
     @Before
     fun setUp() {
-        RetrofitManager.changeBaseUrl("http://127.0.0.1:8080")
         pokemonService = RetrofitManager.createService(PokemonService::class.java)
     }
 

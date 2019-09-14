@@ -1,6 +1,7 @@
 package io.github.brunogabriel.pokedexkotlin.shared.networking
 
 import android.content.Context
+import android.util.Log
 import com.readystatesoftware.chuck.ChuckInterceptor
 import io.github.brunogabriel.pokedexkotlin.BuildConfig
 import okhttp3.OkHttpClient
@@ -21,7 +22,13 @@ object RetrofitManager {
     fun initialize(context: Context, baseUrl: String = BuildConfig.BASE_URL) {
         if (!::retrofit.isInitialized) {
             okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(ChuckInterceptor(context))
+                .apply {
+                    try {
+                        addInterceptor(ChuckInterceptor(context))
+                    } catch (exception: Exception) {
+                        Log.d(RetrofitManager::class.java.name, "Fail using context adding interceptor")
+                    }
+                }
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .build()
