@@ -5,7 +5,7 @@ First of all, thank you Nintendo, Pokemon is an awesome world, I can't forget to
 
 I can't forget to thank either all resources used in this project like pokeapi.co, libraries, fonts, drawables and codes.
 
-## Tools/Libraries
+## Libraries and tools
     - Android extensions (KTX)
     - Constraintlayout
     - Google Material (Library)
@@ -21,7 +21,10 @@ I can't forget to thank either all resources used in this project like pokeapi.c
     - Mockito Kotlin
     - Espresso: Core, Runner and Rules
     - Wiremock
-    - [Notosans Font](OFL_LICENSE)
+    - Notosans
+
+## Extra informations
+See [Notosans License](OFL_LICENSE).
 
 ## Showcase
 <p align=center>
