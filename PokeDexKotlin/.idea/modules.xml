@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PokeDexKotlin.iml" filepath="$PROJECT_DIR$/PokeDexKotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/PokeDexKotlin-app.iml" filepath="$PROJECT_DIR$/app/PokeDexKotlin-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pokedexkotlin-PokeDexKotlin.iml" filepath="$PROJECT_DIR$/pokedexkotlin-PokeDexKotlin.iml" />
     </modules>
   </component>
 </project>
