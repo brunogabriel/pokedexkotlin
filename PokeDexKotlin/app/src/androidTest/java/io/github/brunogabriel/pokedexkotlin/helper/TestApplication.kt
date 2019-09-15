@@ -12,14 +12,17 @@ class TestApplication : Application() {
     companion object {
         const val DEFAULT_SERVER_URL = "http://127.0.0.1:8080"
     }
+
     override fun onCreate() {
         super.onCreate()
         RetrofitManager.initialize(this, DEFAULT_SERVER_URL)
         Realm.init(this)
+        createRealmInMemory()
     }
-    fun createRealmInMemory() {
-        val realmConfig = RealmConfiguration.Builder().name("realm.memory").build()
-        Realm.deleteRealm(realmConfig)
-        Realm.setDefaultConfiguration(realmConfig)
-    }
+}
+
+fun createRealmInMemory() {
+    val realmConfig = RealmConfiguration.Builder().name("realm.memory").build()
+    Realm.deleteRealm(realmConfig)
+    Realm.setDefaultConfiguration(realmConfig)
 }

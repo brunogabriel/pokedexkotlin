@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view_pokemon.apply {
+        recycler_view_pokemon_list.apply {
             adapter = pokemonListAdapter
             addItemDecoration(
                 ColumnSpaceItemDecoration(

@@ -11,19 +11,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * Created by brunogabriel on 2019-08-29.
  */
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var favoritesFragment: FavoritesFragment
-    override lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        onlyTests()
+        setUpView()
     }
 
-    private fun onlyTests() {
+    private fun setUpView() {
         homeFragment = HomeFragment()
         favoritesFragment = FavoritesFragment()
 

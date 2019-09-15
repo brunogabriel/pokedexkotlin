@@ -31,13 +31,13 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view_pokemon.addItemDecoration(ColumnSpaceItemDecoration(8.toDP(), 1))
+        recycler_view_pokemon_favorites.addItemDecoration(ColumnSpaceItemDecoration(8.toDP(), 1))
         presenter = FavoritesPresenter(this)
     }
 
     override fun showFavorites(pokemonList: List<Pokemon>) {
         view_favorites.visibility = View.GONE
-        recycler_view_pokemon.apply {
+        recycler_view_pokemon_favorites.apply {
             visibility = View.VISIBLE
             adapter = PokemonListAdapter(pokemonList) { pokemon,_ ->
                 startActivity(
@@ -55,6 +55,6 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
     }
     override fun showEmptyFavorites() {
         view_favorites.visibility = View.VISIBLE
-        recycler_view_pokemon.visibility = View.GONE
+        recycler_view_pokemon_favorites.visibility = View.GONE
     }
 }

@@ -1,8 +1,7 @@
 package io.github.brunogabriel.pokedexkotlin.shared.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
-import io.github.brunogabriel.pokedexkotlin.helper.TestApplication
+import io.github.brunogabriel.pokedexkotlin.helper.createRealmInMemory
 import io.github.brunogabriel.pokedexkotlin.shared.model.Pokemon
 import io.realm.Realm
 import junit.framework.TestCase.assertEquals
@@ -15,12 +14,11 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class RealmRepositoryTest {
-
     private lateinit var repository: RealmRepository<Pokemon>
 
     @Before
     fun setUp() {
-        (InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as TestApplication).createRealmInMemory()
+        createRealmInMemory()
         repository = PokemonRepository()
     }
 

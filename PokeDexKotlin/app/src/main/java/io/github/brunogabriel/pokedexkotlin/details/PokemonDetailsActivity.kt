@@ -37,7 +37,8 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
         }
         changeCardView()
         presenter =
-            PokemonDetailsPresenter(this, intent.extras.getLong(POKEMON_NUMBER, 0L)).apply {
+            PokemonDetailsPresenter(this,
+                intent?.extras?.getLong(POKEMON_NUMBER, 0L) ?: 0L).apply {
                 initialize()
             }
     }
@@ -116,12 +117,12 @@ class PokemonDetailsActivity : AppCompatActivity(), PokemonDetailsContract.View 
 
         pokemon_back_shiny_image.apply {
             visibility = View.VISIBLE
-            loadImage(pokemon?.sprites?.backShiny)
+            loadImage(pokemon.sprites?.backShiny)
         }
 
         pokemon_front_shiny_image.apply {
             visibility = View.VISIBLE
-            loadImage(pokemon?.sprites?.frontShiny)
+            loadImage(pokemon.sprites?.frontShiny)
         }
 
         pokemon_types_chip_group.visibility = View.VISIBLE
