@@ -41,6 +41,7 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun showPokemons(pokemons: List<Pokemon>) {
+        empty_pokemon_result_view.visibility = View.GONE
         pokemonGridAdapter.setPokemons(pokemons)
     }
 
@@ -60,6 +61,10 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun dismissLoading() {
         loading_view.visibility = View.GONE
+    }
+
+    override fun showEmpyResult() {
+        empty_pokemon_result_view.visibility = View.VISIBLE
     }
 
     private fun setupView() {

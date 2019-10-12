@@ -11,6 +11,7 @@ interface HomeContract {
     interface View : BaseView<Presenter>, LoadingView {
         fun showPokemons(pokemons: List<Pokemon>)
         fun showTryAgain()
+        fun showEmpyResult()
     }
 
     interface Presenter {

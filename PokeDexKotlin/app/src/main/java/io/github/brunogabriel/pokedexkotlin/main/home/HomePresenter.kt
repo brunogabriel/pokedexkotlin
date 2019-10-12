@@ -47,10 +47,10 @@ class HomePresenter(
                 .doOnSubscribe { view.showLoading() }
                 .subscribe({
                     view.dismissLoading()
-                    if (it.isNotEmpty()) {
-                        view.showPokemons(it)
-                    } else {
-                        view.showTryAgain()
+                    view.showPokemons(it)
+                    view.showTryAgain()
+                    if (it.isEmpty()) {
+                        view.showEmpyResult()
                     }
                 }, {
                     view.dismissLoading()
