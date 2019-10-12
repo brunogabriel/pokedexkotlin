@@ -1,9 +1,8 @@
 package io.github.brunogabriel.pokedexkotlin.main.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import io.github.brunogabriel.pokedexkotlin.R
@@ -26,6 +25,8 @@ class HomeFragment : Fragment(), HomeContract.View {
         }
     }
 
+    private var searchMenu: MenuItem? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +41,23 @@ class HomeFragment : Fragment(), HomeContract.View {
         presenter.initialize()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.home_menu, menu)
+        searchMenu = menu.findItem(R.id.action_search)
+        searchMenu?.isVisible = false
+
+        // TODO: apply query rules
+        searchMenu?.actionView as SearchView
+    }
+
     override fun showPokemons(pokemons: List<Pokemon>) {
+        searchMenu?.isVisible = true
         empty_pokemon_result_view.visibility = View.GONE
         pokemonGridAdapter.setPokemons(pokemons)
     }

@@ -18,4 +18,6 @@
     <string name="pokeball">pokeball</string>
     <string name="request_fail_message">Something wrong happened. Verify your connection and try again</string>
     <string name="empty_result_message">No pokemon found</string>
+    <string name="search">Search</string>
+    <string name="pokemon_search_hint">E.g.: Charizard</string>
 </resources>

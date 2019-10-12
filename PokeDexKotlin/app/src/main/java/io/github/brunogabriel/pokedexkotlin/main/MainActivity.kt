@@ -1,7 +1,7 @@
 package io.github.brunogabriel.pokedexkotlin.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import io.github.brunogabriel.pokedexkotlin.R
 import io.github.brunogabriel.pokedexkotlin.main.favorites.FavoritesFragment
 import io.github.brunogabriel.pokedexkotlin.main.home.HomeFragment
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView() {
         setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
         view_pager.apply {
             adapter =
                 BottomPageAdapter(listOf(homeFragment, favoritesFragment), supportFragmentManager)

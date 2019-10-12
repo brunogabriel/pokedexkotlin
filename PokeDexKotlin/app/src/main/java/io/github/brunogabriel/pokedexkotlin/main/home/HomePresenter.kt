@@ -48,7 +48,6 @@ class HomePresenter(
                 .subscribe({
                     view.dismissLoading()
                     view.showPokemons(it)
-                    view.showTryAgain()
                     if (it.isEmpty()) {
                         view.showEmpyResult()
                     }
