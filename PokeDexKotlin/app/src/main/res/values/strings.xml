@@ -14,4 +14,7 @@
     <string name="something_wrong_happened">Something wrong happened</string>
     <string name="try_again">Try again</string>
     <string name="no_favorite_yet">No favorite yet</string>
+    <string name="ops">Ops...</string>
+    <string name="pokeball">pokeball</string>
+    <string name="request_fail_message">Something wrong happened. Verify your connection and try again</string>
 </resources>

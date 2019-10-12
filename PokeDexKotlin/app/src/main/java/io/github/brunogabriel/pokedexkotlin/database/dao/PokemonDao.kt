@@ -1,9 +1,6 @@
 package io.github.brunogabriel.pokedexkotlin.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.github.brunogabriel.pokedexkotlin.database.model.Pokemon
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -18,4 +15,7 @@ interface PokemonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(pokemonList: List<Pokemon>): Completable
+
+    @Update
+    fun updatePokemon(pokemon: Pokemon): Completable
 }

@@ -12,6 +12,6 @@ import retrofit2.Retrofit
 val repositoryModule = module {
     factory<PokemonRepository> {
         val retrofit = get<Retrofit>()
-        PokemonRepositoryImpl(get(), retrofit.create(PokemonService::class.java))
+        PokemonRepositoryImpl(get(), retrofit.create(PokemonService::class.java), get())
     }
 }

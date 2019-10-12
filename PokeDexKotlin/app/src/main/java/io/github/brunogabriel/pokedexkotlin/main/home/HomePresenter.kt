@@ -1,5 +1,6 @@
 package io.github.brunogabriel.pokedexkotlin.main.home
 
+import io.github.brunogabriel.pokedexkotlin.database.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.repository.PokemonRepository
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -27,25 +28,33 @@ class HomePresenter(
         compositeDisposable.clear()
     }
 
+    override fun onFavoriteClicked(pokemon: Pokemon) {
+        pokemon.favorite = !pokemon.favorite
+        compositeDisposable.add(
+            pokemonRepository.updatePokemon(pokemon)
+                .subscribeOn(subscribeScheduler)
+                .observeOn(observeScheduler)
+                .subscribe()
+        )
+    }
+
     private fun requestData() {
+        compositeDisposable.clear()
         compositeDisposable.add(
             pokemonRepository.findPokemons()
                 .subscribeOn(subscribeScheduler)
                 .observeOn(observeScheduler)
-                .doOnSubscribe {
-
-                }
-                .doAfterTerminate {
-
-                }
+                .doOnSubscribe { view.showLoading() }
                 .subscribe({
+                    view.dismissLoading()
                     if (it.isNotEmpty()) {
                         view.showPokemons(it)
                     } else {
-                        val x = 10
+                        view.showTryAgain()
                     }
                 }, {
-                    val y = 12
+                    view.dismissLoading()
+                    view.showTryAgain()
                 })
         )
     }

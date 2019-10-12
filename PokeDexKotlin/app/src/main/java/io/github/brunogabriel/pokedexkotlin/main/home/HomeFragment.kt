@@ -11,6 +11,7 @@ import io.github.brunogabriel.pokedexkotlin.database.model.Pokemon
 import io.github.brunogabriel.pokedexkotlin.shared.adapter.PokemonGridAdapter
 import io.github.brunogabriel.pokedexkotlin.shared.view.ColumnSpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.request_fail_view.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -19,7 +20,11 @@ import org.koin.core.parameter.parametersOf
  */
 class HomeFragment : Fragment(), HomeContract.View {
     override val presenter: HomeContract.Presenter by inject { parametersOf(this) }
-    private val pokemonGridAdapter: PokemonGridAdapter by lazy { PokemonGridAdapter() }
+    private val pokemonGridAdapter: PokemonGridAdapter by lazy {
+        PokemonGridAdapter {
+            presenter.onFavoriteClicked(it)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +42,24 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun showPokemons(pokemons: List<Pokemon>) {
         pokemonGridAdapter.setPokemons(pokemons)
+    }
+
+    override fun showTryAgain() {
+        request_fail_view.apply {
+            visibility = View.VISIBLE
+            try_again_button.setOnClickListener {
+                visibility = View.GONE
+                presenter.initialize()
+            }
+        }
+    }
+
+    override fun showLoading() {
+        loading_view.visibility = View.VISIBLE
+    }
+
+    override fun dismissLoading() {
+        loading_view.visibility = View.GONE
     }
 
     private fun setupView() {
