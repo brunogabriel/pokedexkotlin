@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name='PokedexKotlin'
+include ':app', ':buildSrc'
+rootProject.name='PokeDexKotlin'
