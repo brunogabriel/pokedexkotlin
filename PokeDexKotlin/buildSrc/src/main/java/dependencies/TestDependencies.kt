@@ -8,7 +8,10 @@ object TestDependencies {
     const val ARCH_TESTING = "androidx.arch.core:core-testing:${Versions.ARCH_COMPONENTS}"
     const val EXT_JUNIT = "androidx.test.ext:junit:${Versions.EXT_JUNIT}"
     const val KOIN_TEST = "org.koin:koin-test:${Versions.KOIN}"
-    const val MOCKITO_KOTLIN = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_KOTLIN}"
+    object Mockk {
+        const val MOCKK_UNIT = "io.mockk:mockk:${Versions.MOCKK}"
+        const val MOCKK_INSTRUMENTAL = "io.mockk:mockk-android:${Versions.MOCKK}"
+    }
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
     const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${Versions.ESPRESSO_CORE}"
     const val ESPRESSO_RUNNER = "androidx.test:runner:${Versions.ESPRESSO_RUNNER}"

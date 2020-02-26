@@ -21,7 +21,7 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val ESPRESSO_RUNNER = "1.2.0"
     const val ESPRESSO_RULE = "1.1.0"
-    const val MOCKITO_KOTLIN = "2.2.0"
+    const val MOCKK = "1.9.2"
     const val WIREMOCK = "2.24.1"
     const val PICASSO = "2.71828"
 }

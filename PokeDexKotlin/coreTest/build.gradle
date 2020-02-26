@@ -17,7 +17,7 @@ dependencies {
     implementation Dependencies.Android.APPCOMPAT
     implementation Dependencies.Android.RECYCLERVIEW
     implementation Dependencies.ARCH_COMPONENTS
-    implementation TestDependencies.MOCKITO_KOTLIN
+    implementation TestDependencies.Mockk.MOCKK_UNIT
     implementation TestDependencies.ESPRESSO_RUNNER
     implementation TestDependencies.ESPRESSO_CORE
     implementation TestDependencies.ESPRESSO_RULE

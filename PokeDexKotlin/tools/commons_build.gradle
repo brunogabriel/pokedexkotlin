@@ -35,7 +35,7 @@ dependencies {
     // Libraries Test
     testImplementation TestDependencies.JUNIT
     testImplementation TestDependencies.ARCH_TESTING
-    testImplementation TestDependencies.MOCKITO_KOTLIN
+    testImplementation TestDependencies.Mockk.MOCKK_UNIT
 
     // Libraries Android Test
     androidTestImplementation TestDependencies.ARCH_TESTING
