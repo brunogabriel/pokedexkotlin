@@ -1,14 +1,14 @@
+import dependencies.BuildPlugins
+import dependencies.Dependencies
+
 buildscript {
-    ext.kotlin_version = '1.3.50'
     repositories {
         google()
         jcenter()
-        
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "io.realm:realm-gradle-plugin:5.14.0"
+        classpath BuildPlugins.GRADLE
+        classpath BuildPlugins.KOTLIN
     }
 }
 
@@ -16,7 +16,30 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
+    }
+}
+
+subprojects {
+    afterEvaluate {
+
+        if (!project.hasProperty("android")) return
+
+        android {
+            compileSdkVersion AndroidConfig.COMPILE_SDK
+
+            defaultConfig {
+                minSdkVersion AndroidConfig.MIN_SDK
+                targetSdkVersion AndroidConfig.TARGET_SDK
+                versionCode AndroidConfig.VERSION_CODE
+                versionName AndroidConfig.VERSION_NAME
+                testInstrumentationRunner AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+                multiDexEnabled true
+            }
+        }
+
+        dependencies {
+            implementation Dependencies.KOTLIN
+        }
     }
 }
 

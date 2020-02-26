@@ -1,0 +1,24 @@
+import dependencies.Dependencies
+import dependencies.TestDependencies
+
+apply plugin: 'com.android.library'
+apply from: "$rootDir/tools/commons_build.gradle"
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Libraries
+    implementation Dependencies.Android.APPCOMPAT
+    implementation Dependencies.Android.RECYCLERVIEW
+    implementation Dependencies.ARCH_COMPONENTS
+    implementation TestDependencies.MOCKITO_KOTLIN
+    implementation TestDependencies.ESPRESSO_RUNNER
+    implementation TestDependencies.ESPRESSO_CORE
+    implementation TestDependencies.ESPRESSO_RULE
+}
