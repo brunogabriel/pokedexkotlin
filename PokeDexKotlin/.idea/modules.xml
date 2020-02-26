@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/coreTest/coreTest.iml" filepath="$PROJECT_DIR$/coreTest/coreTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pokemonList/pokemonList.iml" filepath="$PROJECT_DIR$/pokemonList/pokemonList.iml" />
       <module fileurl="file://$PROJECT_DIR$/styleguide/styleguide.iml" filepath="$PROJECT_DIR$/styleguide/styleguide.iml" />
     </modules>
   </component>

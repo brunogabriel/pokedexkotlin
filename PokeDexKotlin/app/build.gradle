@@ -15,6 +15,7 @@ dependencies {
 
     // Modules
     implementation project(Modules.STYLEGUIDE)
+    implementation project(Modules.POKEMONLIST)
 
     // Libraries
     implementation Dependencies.Android.APPCOMPAT

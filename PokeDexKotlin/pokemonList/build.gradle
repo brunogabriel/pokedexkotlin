@@ -1,0 +1,27 @@
+import dependencies.Dependencies
+import dependencies.Modules
+
+apply plugin: 'com.android.library'
+apply from: "$rootDir/tools/base_build.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Modules
+    implementation project(Modules.STYLEGUIDE)
+    implementation project(Modules.CORE)
+
+    // libraries
+    implementation Dependencies.Android.APPCOMPAT
+    implementation Dependencies.Android.CONSTRAINT_LAYOUT
+    implementation Dependencies.Android.RECYCLERVIEW
+    implementation Dependencies.Android.MATERIAL
+    implementation Dependencies.KTX
+    implementation Dependencies.Koin.CORE
+    implementation Dependencies.Koin.VIEWMODEL
+    implementation Dependencies.Koin.SCOPE
+    implementation Dependencies.RX.RX_ANDROID
+    implementation Dependencies.RX.RX_KOTLIN
+}

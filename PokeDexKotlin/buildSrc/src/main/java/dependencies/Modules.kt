@@ -8,4 +8,7 @@ object Modules {
     const val STYLEGUIDE = ":styleGuide"
     const val CORE = ":core"
     const val CORETEST = ":coreTest"
+
+    // features
+    const val POKEMONLIST = ":pokemonList"
 }

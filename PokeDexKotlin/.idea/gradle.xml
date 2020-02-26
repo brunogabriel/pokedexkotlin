@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/coreTest" />
+            <option value="$PROJECT_DIR$/pokemonList" />
             <option value="$PROJECT_DIR$/styleGuide" />
           </set>
         </option>
