@@ -1,0 +1,27 @@
+import dependencies.BuildPlugins
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint BuildPlugins.KTLINT
+
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle," +
+            "output=${buildDir}/reports/ktlint.xml"
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
+
+check.dependsOn ktlint
