@@ -1,0 +1,16 @@
+import dependencies.Dependencies
+
+apply plugin: 'com.android.library'
+apply from: "$rootDir/tools/base_build.gradle"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Libraries
+    implementation Dependencies.Android.APPCOMPAT
+    implementation Dependencies.Android.RECYCLERVIEW
+    implementation Dependencies.ARCH_COMPONENTS
+    implementation Dependencies.RX.RX_KOTLIN
+    implementation Dependencies.RX.RX_ANDROID
+    implementation Dependencies.PICASSO
+}

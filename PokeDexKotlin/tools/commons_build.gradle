@@ -1,0 +1,51 @@
+import dependencies.TestDependencies
+import dependencies.Modules
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled true
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.returnDefaultValues = true
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    // Modules
+    testImplementation project(Modules.CORETEST)
+    androidTestImplementation project(Modules.CORETEST)
+
+    // Libraries Test
+    testImplementation TestDependencies.JUNIT
+    testImplementation TestDependencies.ARCH_TESTING
+    testImplementation TestDependencies.MOCKITO_KOTLIN
+
+    // Libraries Android Test
+    androidTestImplementation TestDependencies.ARCH_TESTING
+    androidTestImplementation TestDependencies.EXT_JUNIT
+    androidTestImplementation TestDependencies.ESPRESSO_RUNNER
+    androidTestImplementation TestDependencies.ESPRESSO_CORE
+    androidTestImplementation TestDependencies.ESPRESSO_RULE
+    androidTestImplementation TestDependencies.ESPRESSO_CONTRIB
+    androidTestImplementation TestDependencies.KOIN_TEST
+    androidTestImplementation TestDependencies.WIREMOCK
+
+    androidTestUtil TestDependencies.ORCHESTRATOR
+}
