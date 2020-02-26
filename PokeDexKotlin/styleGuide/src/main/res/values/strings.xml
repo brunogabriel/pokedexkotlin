@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">PokéDexKotlin</string>
-    <string name="pokemon">Pokémon</string>
-    <string name="home">Home</string>
-    <string name="favorites">Favorites</string>
-</resources>
