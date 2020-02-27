@@ -3,6 +3,7 @@ import dependencies.Modules
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/config/quality_build.gradle"
 
 android {
     buildTypes {
@@ -29,8 +30,8 @@ android {
 
 dependencies {
     // Modules
-//    testImplementation project(Modules.CORETEST)
-//    androidTestImplementation project(Modules.CORETEST)
+    testImplementation project(Modules.CORE.TEST)
+    androidTestImplementation project(Modules.CORE.TEST)
 
     // Libraries Test
     testImplementation TestDependencies.JUNIT

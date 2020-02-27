@@ -1,3 +1,5 @@
 rootProject.name='PokeDexKotlin'
 include ':app'
 include ':buildSrc'
+include ':core:core-test'
+include ':core:style-guide'
