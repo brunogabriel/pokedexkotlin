@@ -1,0 +1,8 @@
+import dependencies.Dependencies
+
+apply from: "$rootDir/config/java_build.gradle"
+
+dependencies {
+    implementation Dependencies.RX.RX_JAVA
+    implementation Dependencies.KOIN
+}
