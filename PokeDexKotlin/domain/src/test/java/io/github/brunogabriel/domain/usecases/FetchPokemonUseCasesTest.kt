@@ -27,8 +27,8 @@ class FetchPokemonUseCasesTest {
     @Test
     fun `should fetch pokemon`() {
         val pokemons = listOf(
-            Pokemon("Charmander", "url1"),
-            Pokemon("Squirtle", "url2")
+            Pokemon(7, "Charmander", "url1"),
+            Pokemon(4, "Squirtle", "url2")
         )
         every { repository.fetchPokemons(any()) } returns Single.just(pokemons)
 

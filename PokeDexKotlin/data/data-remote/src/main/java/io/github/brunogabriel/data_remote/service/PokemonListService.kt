@@ -1,6 +1,7 @@
 package io.github.brunogabriel.data_remote.service
 
 import io.github.brunogabriel.data_remote.models.PokemonPayload
+import io.github.brunogabriel.data_remote.models.PokemonResultPayload
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -10,5 +11,5 @@ import retrofit2.http.Query
  */
 interface PokemonListService {
     @GET("pokemon")
-    fun findPokemons(@Query("limit") limit: Int = 251): Single<List<PokemonPayload>>
+    fun findPokemons(@Query("limit") limit: Int = 251): Single<PokemonResultPayload>
 }

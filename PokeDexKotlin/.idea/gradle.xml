@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/core/core-test" />
             <option value="$PROJECT_DIR$/core/style-guide" />
             <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/data-core" />
             <option value="$PROJECT_DIR$/data/data-local" />
             <option value="$PROJECT_DIR$/data/data-remote" />
             <option value="$PROJECT_DIR$/domain" />

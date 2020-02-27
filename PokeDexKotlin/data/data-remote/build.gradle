@@ -11,9 +11,9 @@ android {
 }
 
 dependencies {
-//    implementation project(Modules.DOMAIN)
-//    implementation project(Modules.CORETEST)
-
+    implementation project(Modules.DOMAIN)
+    implementation project(Modules.DATA.CORE)
+    implementation project(Modules.CORE.TEST)
     // Libraries
     implementation Dependencies.RX.RX_KOTLIN
     implementation Dependencies.RX.RX_ANDROID

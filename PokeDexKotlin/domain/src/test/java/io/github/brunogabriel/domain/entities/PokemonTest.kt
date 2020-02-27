@@ -10,8 +10,9 @@ import org.junit.Test
 class PokemonTest {
     @Test
     fun `should be equals`() {
+        val number = 9
         val name = "Charizard"
         val imageUrl = "any url"
-        assertThat(Pokemon(name, imageUrl), `is`(Pokemon(name, imageUrl)))
+        assertThat(Pokemon(number, name, imageUrl), `is`(Pokemon(number, name, imageUrl)))
     }
 }

@@ -13,6 +13,7 @@ object Modules {
     }
 
     object DATA {
+        const val CORE = ":data:data-core"
         const val REMOTE = ":data:data-remote"
         const val LOCAL = ":data:data-local"
     }
