@@ -1,5 +1,5 @@
 import dependencies.Dependencies
-//import dependencies.Modules
+import dependencies.Modules
 
 apply plugin: 'com.android.application'
 apply from: "$rootDir/config/android_build.gradle"
@@ -11,6 +11,9 @@ android {
 }
 
 dependencies {
+    implementation project(Modules.CORE.STYLEGUIDE)
+    implementation project(Modules.FEATURES.POKEMON_LIST)
+
     implementation Dependencies.Android.APPCOMPAT
     implementation Dependencies.KTX
     implementation Dependencies.Koin.CORE
