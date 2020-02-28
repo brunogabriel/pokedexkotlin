@@ -1,7 +1,10 @@
 package io.github.brunogabriel.data_remote.service
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.tomakehurst.wiremock.client.WireMock.*
+import com.github.tomakehurst.wiremock.client.WireMock.aResponse
+import com.github.tomakehurst.wiremock.client.WireMock.equalTo
+import com.github.tomakehurst.wiremock.client.WireMock.get
+import com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import io.github.brunogabriel.data_remote.di.dataRemoteModule
 import io.github.brunogabriel.data_remote.di.urlTest

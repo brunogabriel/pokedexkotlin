@@ -6,7 +6,7 @@ import io.github.brunogabriel.domain.entities.Pokemon
 /**
  * Created by bruno on 27/02/20
  */
-class PokemonCacheMapper {
+object PokemonCacheMapper {
     fun mapToPokemon(data: List<PokemonCache>) = data.map {
         Pokemon(
             number = it.primaryKey,

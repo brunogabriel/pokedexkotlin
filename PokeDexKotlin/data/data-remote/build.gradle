@@ -6,7 +6,7 @@ apply from: "$rootDir/config/android_build.gradle"
 
 android {
     defaultConfig {
-        buildConfigField "String", "API_URL", "\"https://https://pokeapi.co/api/v2/\""
+        buildConfigField "String", "API_URL", "\"https://pokeapi.co/api/v2/\""
     }
 }
 

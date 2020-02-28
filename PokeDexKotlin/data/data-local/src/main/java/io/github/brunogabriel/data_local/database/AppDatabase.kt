@@ -2,6 +2,7 @@ package io.github.brunogabriel.data_local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import io.github.brunogabriel.data_local.database.dao.PokemonDao
 import io.github.brunogabriel.data_local.models.PokemonCache
 
 /**
@@ -13,4 +14,5 @@ import io.github.brunogabriel.data_local.models.PokemonCache
     entities = [PokemonCache::class]
 )
 abstract class AppDatabase : RoomDatabase() {
+    abstract fun pokemonDao(): PokemonDao
 }

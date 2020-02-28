@@ -7,7 +7,7 @@ import org.koin.dsl.module
 /**
  * Created by bruno on 27/02/20
  */
-private val useCasesModule = module {
+val domainModule = module {
     factory {
         FetchPokemonUseCases(
             repository = get(),
@@ -15,6 +15,3 @@ private val useCasesModule = module {
         )
     }
 }
-
-val domainModule = listOf(useCasesModule)
-

@@ -2,12 +2,12 @@ complexity:
   TooManyFunctions:
     thresholdInClasses: 20
 
-#comments:
-#  excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
-#  CommentOverPrivateFunction:
-#    active: false
-#  CommentOverPrivateProperty:
-#    active: false
+comments:
+  excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
+  CommentOverPrivateFunction:
+    active: false
+  CommentOverPrivateProperty:
+    active: false
 
 style:
   DataClassShouldBeImmutable:

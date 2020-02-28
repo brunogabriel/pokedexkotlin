@@ -5,12 +5,12 @@ import io.github.brunogabriel.data_core.source.PokemonRemoteDataSource
 import io.github.brunogabriel.data_remote.BuildConfig
 import io.github.brunogabriel.data_remote.service.PokemonListService
 import io.github.brunogabriel.data_remote.source.PokemonRemoteDataSourceImplementation
+import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by bruno on 27/02/20

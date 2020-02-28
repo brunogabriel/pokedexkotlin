@@ -1,6 +1,5 @@
 package io.github.brunogabriel.data_remote.service
 
-import io.github.brunogabriel.data_remote.models.PokemonPayload
 import io.github.brunogabriel.data_remote.models.PokemonResultPayload
 import io.reactivex.Single
 import retrofit2.http.GET

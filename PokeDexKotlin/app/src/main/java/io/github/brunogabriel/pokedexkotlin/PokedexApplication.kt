@@ -1,6 +1,11 @@
 package io.github.brunogabriel.pokedexkotlin
 
 import android.app.Application
+import io.github.brunogabriel.data_core.di.dataModule
+import io.github.brunogabriel.data_local.di.dataLocalModule
+import io.github.brunogabriel.data_remote.di.dataRemoteModule
+import io.github.brunogabriel.domain.di.domainModule
+import io.github.brunogabriel.pokemon_list.di.pokemonListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,7 +19,9 @@ class PokedexApplication : Application() {
             androidContext(this@PokedexApplication)
             modules(
                 listOf(
-                    // TODO:
+                    dataModule, dataLocalModule, dataRemoteModule,
+                    domainModule,
+                    pokemonListModule
                 )
             )
         }
