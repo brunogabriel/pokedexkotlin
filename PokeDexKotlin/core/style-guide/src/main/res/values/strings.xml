@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">PokéDexKotlin</string>
     <string name="pokemon_number_pattern">#%d</string>
+    <string name="pokemon">Pokémon</string>
+    <string name="loading">Loading…</string>
+    <string name="try_again">Try again</string>
+    <string name="try_again_title_message">Fail getting data</string>
+    <string name="try_again_content_message">Maybe you have internet problems. Verify your connection status and try again now or latter</string>
 </resources>

@@ -26,4 +26,5 @@ dependencies {
     implementation Dependencies.Koin.SCOPE
     implementation Dependencies.RX.RX_ANDROID
     implementation Dependencies.RX.RX_KOTLIN
+    implementation Dependencies.LOTTIE
 }

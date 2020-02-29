@@ -1,5 +1,6 @@
 package io.github.brunogabriel.pokemon_list.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,8 +27,9 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("DefaultLocale")
         fun bind(pokemon: Pokemon) = with(itemView) {
-            pokemon_name_text_view.text = pokemon.name
+            pokemon_name_text_view.text = pokemon.name.capitalize()
             pokemon_number_text_view.text = context.getString(R.string.pokemon_number_pattern, pokemon.number)
             pokemon_image_view.loadImage(pokemon.imageUrl)
         }

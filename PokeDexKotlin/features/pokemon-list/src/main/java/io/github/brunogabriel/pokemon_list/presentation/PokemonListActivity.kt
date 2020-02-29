@@ -1,6 +1,7 @@
 package io.github.brunogabriel.pokemon_list.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -44,14 +45,18 @@ class PokemonListActivity : AppCompatActivity() {
         viewModel.state.observe(this, Observer { state ->
             when (state) {
                 is UiState.Success -> {
+                    binding.tryAgainView.visibility = View.GONE
+                    binding.loadingView.visibility = View.GONE
                     pokemonAdapter.pokemonList = state.data
-                    pokemonAdapter.notifyDataSetChanged()
+                    binding.pokemonsRecyclerView.visibility = View.VISIBLE
                 }
                 is UiState.Loading -> {
-                    // TODO: add loading animation
+                    binding.tryAgainView.visibility = View.GONE
+                    binding.loadingView.visibility = View.VISIBLE
                 }
                 is UiState.Failure -> {
-                    // TODO: add failure and try again
+                    binding.loadingView.visibility = View.GONE
+                    binding.tryAgainView.visibility = View.VISIBLE
                 }
             }
         })

@@ -12,6 +12,7 @@ object Dependencies {
     const val PICASSO = "com.squareup.picasso:picasso:${Versions.PICASSO}"
     const val DETEKT = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.DETEKT}"
     const val KTLINT = "com.pinterest:ktlint:${Versions.KTLINT}"
+    const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE}"
 
     object Android {
         const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.ANDROIDX}"

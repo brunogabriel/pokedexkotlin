@@ -15,6 +15,7 @@ dependencies {
     implementation project(Modules.DATA.CORE)
     implementation project(Modules.CORE.TEST)
     // Libraries
+
     implementation Dependencies.RX.RX_KOTLIN
     implementation Dependencies.RX.RX_ANDROID
     implementation Dependencies.KOIN
