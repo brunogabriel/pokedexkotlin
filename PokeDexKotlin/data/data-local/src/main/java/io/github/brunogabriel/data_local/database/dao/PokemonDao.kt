@@ -13,15 +13,15 @@ import io.reactivex.Single
 @Dao
 interface PokemonDao {
     @Insert
-    fun insertAll(photos: List<PokemonCache>)
+    fun insertAll(pokemons: List<PokemonCache>)
 
     @Query("SELECT * FROM pokemons")
-    fun findPhotos(): Single<List<PokemonCache>>
+    fun findPokemons(): Single<List<PokemonCache>>
 
     @Transaction
-    fun update(photos: List<PokemonCache>) {
+    fun update(pokemons: List<PokemonCache>) {
         deleteAll()
-        insertAll(photos)
+        insertAll(pokemons)
     }
 
     @Query("DELETE FROM pokemons")

@@ -47,7 +47,7 @@ class PokemonRepositoryImplementationTest {
     @Test
     fun `should find pokemons from cache`() {
         val pokemons = listOf(Pokemon(1, "Bulbasaur", "anyImage"))
-        every { cacheDataSource.fetchPhotos() } returns Single.just(pokemons)
+        every { cacheDataSource.fetchPokemons() } returns Single.just(pokemons)
 
         val expected = pokemonRepository.fetchPokemons(false)
         expected.test()
@@ -61,7 +61,7 @@ class PokemonRepositoryImplementationTest {
     @Test
     fun `should insert pokemons on cache when cache is empty and remote got pokemons`() {
         val pokemons = listOf(Pokemon(1, "Bulbasaur", "anyImage"))
-        every { cacheDataSource.fetchPhotos() } returns Single.just(emptyList())
+        every { cacheDataSource.fetchPokemons() } returns Single.just(emptyList())
         every { remoteDataSource.findPokemons() } returns Single.just(pokemons)
 
         val expected = pokemonRepository.fetchPokemons(false)

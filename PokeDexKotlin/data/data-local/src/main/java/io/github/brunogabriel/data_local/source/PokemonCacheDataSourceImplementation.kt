@@ -12,8 +12,8 @@ import io.reactivex.Single
 class PokemonCacheDataSourceImplementation(
     private val pokemonDao: PokemonDao
 ) : PokemonCacheDataSource {
-    override fun fetchPhotos(): Single<List<Pokemon>> {
-        return pokemonDao.findPhotos().map {
+    override fun fetchPokemons(): Single<List<Pokemon>> {
+        return pokemonDao.findPokemons().map {
             PokemonCacheMapper.mapToPokemon(it)
         }
     }

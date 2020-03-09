@@ -17,7 +17,7 @@ class PokemonRepositoryImplementation(
         return if (forceUpdate) {
             findFromRemoteDataSource(forceUpdate)
         } else {
-            cacheDataSource.fetchPhotos().flatMap { result ->
+            cacheDataSource.fetchPokemons().flatMap { result ->
                 when {
                     result.isEmpty() -> findFromRemoteDataSource(false)
                     else -> Single.just(result)

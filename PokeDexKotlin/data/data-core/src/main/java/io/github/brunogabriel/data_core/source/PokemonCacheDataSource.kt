@@ -7,7 +7,7 @@ import io.reactivex.Single
  * Created by bruno on 27/02/20
  */
 interface PokemonCacheDataSource {
-    fun fetchPhotos(): Single<List<Pokemon>>
+    fun fetchPokemons(): Single<List<Pokemon>>
     fun insertData(data: List<Pokemon>)
     fun updateData(data: List<Pokemon>)
 }
