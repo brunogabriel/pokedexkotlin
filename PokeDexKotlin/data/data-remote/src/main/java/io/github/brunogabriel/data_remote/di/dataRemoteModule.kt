@@ -1,6 +1,7 @@
 package io.github.brunogabriel.data_remote.di
 
 import androidx.annotation.VisibleForTesting
+import com.readystatesoftware.chuck.ChuckInterceptor
 import io.github.brunogabriel.data_core.source.PokemonRemoteDataSource
 import io.github.brunogabriel.data_remote.BuildConfig
 import io.github.brunogabriel.data_remote.service.PokemonListService
@@ -23,6 +24,7 @@ val dataRemoteModule = module {
         OkHttpClient.Builder()
             .readTimeout(60L, TimeUnit.SECONDS)
             .connectTimeout(40L, TimeUnit.SECONDS)
+            .addInterceptor(ChuckInterceptor(get()))
             .build()
     }
 

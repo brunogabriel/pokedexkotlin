@@ -46,5 +46,10 @@ object Dependencies {
         const val RX_KOTLIN = "io.reactivex.rxjava2:rxkotlin:${Versions.RX_KOTLIN}"
         const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.RX_ANDROID}"
     }
+
+    object CHUCK {
+        const val CHUCK_DEBUG = "com.readystatesoftware.chuck:library:${Versions.CHUCK}"
+        const val CHUCK_RELEASE = "com.readystatesoftware.chuck:library-no-op:${Versions.CHUCK}"
+    }
 }
 
