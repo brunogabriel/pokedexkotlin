@@ -8,4 +8,5 @@ dependencies {
     implementation Dependencies.Android.MATERIAL
     implementation Dependencies.Android.RECYCLERVIEW
     implementation Dependencies.Android.CONSTRAINT_LAYOUT
+    implementation Dependencies.LOTTIE
 }

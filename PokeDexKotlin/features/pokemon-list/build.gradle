@@ -9,6 +9,11 @@ apply plugin: 'kotlin-android-extensions'
 dependencies {
     // Modules
     implementation project(Modules.CORE.STYLEGUIDE)
+    implementation project(Modules.CORE.APP)
+    implementation project(Modules.DOMAIN)
+    implementation project(Modules.DATA.CORE)
+    implementation project(Modules.DATA.LOCAL)
+    implementation project(Modules.DATA.REMOTE)
 
     // libraries
     implementation Dependencies.Android.APPCOMPAT
@@ -21,4 +26,5 @@ dependencies {
     implementation Dependencies.Koin.SCOPE
     implementation Dependencies.RX.RX_ANDROID
     implementation Dependencies.RX.RX_KOTLIN
+    implementation Dependencies.LOTTIE
 }

@@ -26,5 +26,7 @@ object Versions {
     const val WIREMOCK = "2.24.1"
     const val PICASSO = "2.71828"
     const val MOCKK = "1.9.2"
+    const val LOTTIE = "3.4.0"
+    const val CHUCK = "1.1.0"
 }
 

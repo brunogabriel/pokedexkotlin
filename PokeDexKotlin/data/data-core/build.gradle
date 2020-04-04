@@ -1,0 +1,10 @@
+import dependencies.Dependencies
+import dependencies.Modules
+
+apply from: "$rootDir/config/java_build.gradle"
+
+dependencies {
+    implementation project(Modules.DOMAIN)
+    implementation Dependencies.RX.RX_JAVA
+    implementation Dependencies.KOIN
+}

@@ -12,6 +12,7 @@ object Dependencies {
     const val PICASSO = "com.squareup.picasso:picasso:${Versions.PICASSO}"
     const val DETEKT = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.DETEKT}"
     const val KTLINT = "com.pinterest:ktlint:${Versions.KTLINT}"
+    const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE}"
 
     object Android {
         const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.ANDROIDX}"
@@ -44,6 +45,11 @@ object Dependencies {
         const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${Versions.RX_JAVA}"
         const val RX_KOTLIN = "io.reactivex.rxjava2:rxkotlin:${Versions.RX_KOTLIN}"
         const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.RX_ANDROID}"
+    }
+
+    object CHUCK {
+        const val CHUCK_DEBUG = "com.readystatesoftware.chuck:library:${Versions.CHUCK}"
+        const val CHUCK_RELEASE = "com.readystatesoftware.chuck:library-no-op:${Versions.CHUCK}"
     }
 }
 

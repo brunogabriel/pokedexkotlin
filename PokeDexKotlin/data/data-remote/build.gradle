@@ -1,0 +1,26 @@
+import dependencies.Dependencies
+import dependencies.Modules
+
+apply plugin: 'com.android.library'
+apply from: "$rootDir/config/android_build.gradle"
+
+android {
+    defaultConfig {
+        buildConfigField "String", "API_URL", "\"https://pokeapi.co/api/v2/\""
+    }
+}
+
+dependencies {
+    implementation project(Modules.DOMAIN)
+    implementation project(Modules.DATA.CORE)
+    implementation project(Modules.CORE.TEST)
+    // Libraries
+    implementation Dependencies.RX.RX_KOTLIN
+    implementation Dependencies.RX.RX_ANDROID
+    implementation Dependencies.KOIN
+    implementation Dependencies.Network.RETROFIT_RX_ADAPTER
+    implementation Dependencies.Network.RETROFIT
+    implementation Dependencies.Network.RETROFIT_GSON
+    debugImplementation Dependencies.CHUCK.CHUCK_DEBUG
+    releaseImplementation Dependencies.CHUCK.CHUCK_RELEASE
+}

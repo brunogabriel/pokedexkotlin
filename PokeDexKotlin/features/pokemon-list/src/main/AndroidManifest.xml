@@ -2,7 +2,7 @@
     package="io.github.brunogabriel.pokemon_list">
 
     <application>
-        <activity android:name=".presentation.PokemonMainActivity"
+        <activity android:name=".presentation.PokemonListActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
