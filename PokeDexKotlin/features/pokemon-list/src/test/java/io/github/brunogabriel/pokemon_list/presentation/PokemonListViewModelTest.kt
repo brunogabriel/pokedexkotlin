@@ -7,7 +7,7 @@ import io.github.brunogabriel.domain.entities.Pokemon
 import io.github.brunogabriel.domain.usecases.FetchPokemonUseCases
 import io.mockk.MockKAnnotations
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import io.mockk.verify
 import io.reactivex.Single
@@ -22,7 +22,7 @@ import org.junit.Test
 class PokemonListViewModelTest {
     @get: Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
-    @MockK(relaxed = true)
+    @RelaxedMockK
     private lateinit var useCase: FetchPokemonUseCases
     private lateinit var viewModel: PokemonListViewModel
 

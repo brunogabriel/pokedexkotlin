@@ -4,7 +4,7 @@ import io.github.brunogabriel.domain.entities.Pokemon
 import io.github.brunogabriel.domain.repository.PokemonRepository
 import io.mockk.MockKAnnotations
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
@@ -14,7 +14,7 @@ import org.junit.Test
  * Created by bruno on 27/02/20
  */
 class FetchPokemonUseCasesTest {
-    @MockK(relaxed = true)
+    @RelaxedMockK
     private lateinit var repository: PokemonRepository
     private lateinit var fetchPokemonUseCases: FetchPokemonUseCases
 

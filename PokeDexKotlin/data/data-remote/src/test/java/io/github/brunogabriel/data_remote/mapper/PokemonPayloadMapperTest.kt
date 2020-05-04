@@ -1,6 +1,5 @@
 package io.github.brunogabriel.data_remote.mapper
 
-import io.github.brunogabriel.data_remote.mapper.PokemonPayloadMapper.mapToPokemon
 import io.github.brunogabriel.data_remote.models.PokemonPayload
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
@@ -20,7 +19,7 @@ class PokemonPayloadMapperTest {
                 url
             )
         )
-        val result = mapToPokemon(payloads)
+        val result = payloads.map { it.toPokemon() }
         assertThat(result.size, `is`(1))
         assertThat(result[0].number, `is`(1))
         assertThat(result[0].name, `is`(name))
@@ -37,7 +36,7 @@ class PokemonPayloadMapperTest {
                 url
             )
         )
-        val result = mapToPokemon(payloads)
+        val result = payloads.map { it.toPokemon() }
         assertThat(result.size, `is`(1))
         assertThat(result[0].number, `is`(0))
         assertThat(result[0].name, `is`(name))

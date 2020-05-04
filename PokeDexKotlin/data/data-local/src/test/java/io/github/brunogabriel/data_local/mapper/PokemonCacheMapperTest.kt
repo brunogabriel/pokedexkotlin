@@ -1,7 +1,5 @@
 package io.github.brunogabriel.data_local.mapper
 
-import io.github.brunogabriel.data_local.mapper.PokemonCacheMapper.mapToCache
-import io.github.brunogabriel.data_local.mapper.PokemonCacheMapper.mapToPokemon
 import io.github.brunogabriel.data_local.models.PokemonCache
 import io.github.brunogabriel.domain.entities.Pokemon
 import org.hamcrest.core.Is.`is`
@@ -23,7 +21,7 @@ class PokemonCacheMapperTest {
                 url
             )
         )
-        val result = mapToPokemon(cache)
+        val result = cache.map { it.toPokemon() }
         assertThat(result.size, `is`(1))
         assertThat(result[0].number, `is`(1))
         assertThat(result[0].name, `is`(name))
@@ -40,7 +38,7 @@ class PokemonCacheMapperTest {
                 number, name, url
             )
         )
-        val result = mapToCache(pokemons)
+        val result = pokemons.map { it.toPokemonCache() }
         assertThat(result.size, `is`(1))
         assertThat(result[0].primaryKey, `is`(number))
         assertThat(result[0].name, `is`(name))
