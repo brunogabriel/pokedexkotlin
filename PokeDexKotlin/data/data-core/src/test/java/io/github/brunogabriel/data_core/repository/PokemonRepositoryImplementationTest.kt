@@ -6,7 +6,7 @@ import io.github.brunogabriel.domain.entities.Pokemon
 import io.github.brunogabriel.domain.repository.PokemonRepository
 import io.mockk.MockKAnnotations
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
 import io.reactivex.Single
 import org.junit.Before
@@ -16,9 +16,9 @@ import org.junit.Test
  * Created by bruno on 08/03/20
  */
 class PokemonRepositoryImplementationTest {
-    @MockK(relaxed = true)
+    @RelaxedMockK
     private lateinit var cacheDataSource: PokemonCacheDataSource
-    @MockK(relaxed = true)
+    @RelaxedMockK
     private lateinit var remoteDataSource: PokemonRemoteDataSource
     private lateinit var pokemonRepository: PokemonRepository
 

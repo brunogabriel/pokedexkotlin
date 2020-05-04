@@ -5,7 +5,7 @@ import io.github.brunogabriel.data_local.models.PokemonCache
 import io.github.brunogabriel.domain.entities.Pokemon
 import io.mockk.MockKAnnotations
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
 import io.reactivex.Single
 import org.junit.Before
@@ -15,7 +15,7 @@ import org.junit.Test
  * Created by bruno on 28/02/20
  */
 class PokemonCacheDataSourceImplementationTest {
-    @MockK(relaxed = true)
+    @RelaxedMockK
     private lateinit var dao: PokemonDao
     private lateinit var dataSource: PokemonCacheDataSourceImplementation
 

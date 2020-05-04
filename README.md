@@ -22,5 +22,10 @@ A simple MVVM multi module app project using some architecture components. Thank
 - Wiremock
 - Lottie
 
+## Showcase
+<p align=center>
+    <img src="Screenshot/print1.png" width=200>
+</p>
+
 ## LICENSE
 MIT © [MIT](LICENSE)
