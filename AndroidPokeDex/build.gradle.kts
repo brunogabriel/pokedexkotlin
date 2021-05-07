@@ -2,7 +2,8 @@ import com.android.build.gradle.BaseExtension
 import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 import org.jetbrains.kotlin.gradle.internal.CacheImplementation
 
-buildScript {
+buildscript {
+
     repositories {
         google()
         jcenter()
@@ -20,7 +21,7 @@ allprojects {
     repositories {
         jcenter()
         google()
-        maven("https://jipack.io")
+        maven("https://jitpack.io")
         maven("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 
@@ -32,6 +33,7 @@ fun Project.configureAndroid() {
 
     when {
         isAppModule -> configureAppAndroid()
+//        ModuleDependencies.modules.contains(":$name") -> configureAndroidLibrary()
         else -> return
     }
 
@@ -49,7 +51,7 @@ fun Project.configureAndroid() {
             versionCode = Config.versionCode
             versionName = Config.versionName
             testInstrumentationRunner = Config.androidTestInstrumentation
-            vectorDrawables.userSupportLibrary = true
+            vectorDrawables.useSupportLibrary = true
             multiDexEnabled = true
         }
 
@@ -112,6 +114,7 @@ fun Project.configureAndroidLibrary() {
         tasks.register("buildLibsModule") {
             dependsOn("build")
         }
+
         tasks.register("publishLibsModule") {
             dependsOn("publish")
         }

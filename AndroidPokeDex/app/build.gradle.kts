@@ -1,5 +1,5 @@
 repositories {
-    google()
+    google()  // For the Android support libraries.
 }
 
 android {
@@ -11,13 +11,17 @@ android {
         outputs.all {
             if (name.contains("release"))
                 (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                    "app-release.apk"
+                    "sample-app-release.apk"
         }
     }
 
     signingConfigs {
         getByName("release") {
-           // TODO:
+            isV2SigningEnabled = true
+            keyAlias = "a"
+            storeFile = rootProject.file("./keystore/a")
+            keyPassword = "123456"
+            storePassword = "123456"
         }
     }
 }
@@ -25,3 +29,4 @@ android {
 dependencies {
     implementation(AppDependencies.androidLibraries)
 }
+
