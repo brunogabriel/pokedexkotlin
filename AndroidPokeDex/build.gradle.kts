@@ -13,6 +13,7 @@ buildscript {
     dependencies {
         classpath(AppDependencies.kotlin)
         classpath(AppDependencies.gradlePlugin)
+        classpath(AppDependencies.hiltPlugin)
         classpath(kotlin("gradle-plugin", Versions.kotlin))
     }
 }
@@ -40,6 +41,7 @@ fun Project.configureAndroid() {
     apply(plugin = "kotlin-android")
     apply(plugin = "kotlin-android-extensions")
     apply(plugin = "kotlin-kapt")
+    apply(plugin = "dagger.hilt.android.plugin")
 
     configure<BaseExtension> {
         compileSdkVersion(Config.compileSdk)
