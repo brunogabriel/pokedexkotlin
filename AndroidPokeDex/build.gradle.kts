@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 import org.jetbrains.kotlin.gradle.internal.CacheImplementation
 
 buildscript {
-
     repositories {
         google()
         jcenter()
@@ -34,7 +33,7 @@ fun Project.configureAndroid() {
 
     when {
         isAppModule -> configureAppAndroid()
-//        ModuleDependencies.modules.contains(":$name") -> configureAndroidLibrary()
+        ModuleDependencies.modules.contains(":$name") -> configureAndroidLibrary()
         else -> return
     }
 

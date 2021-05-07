@@ -6,6 +6,10 @@ fun DependencyHandler.project(list: List<String>) {
     }
 }
 
+fun DependencyHandler.project(module: String) {
+    add("implementation", project(mapOf("path" to module)))
+}
+
 fun DependencyHandler.kapt(list: List<String>) {
     list.forEach { dependency ->
         add("kapt", dependency)

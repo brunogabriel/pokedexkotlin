@@ -10,4 +10,20 @@ object Versions {
 
     // hilt
     const val hilt = "2.35"
+
+    // rx
+    const val rxAndroid = "2.1.1"
+    const val rxKotlin = "2.4.0"
+    const val rxJava = "2.2.11"
+
+    // retrofit
+    const val retrofit = "2.9.0"
+    const val rxAdapter = "2.6.1"
+    const val loggingInterceptor = "4.9.1"
+    const val rxAdapterJava = "1.0.0"
+    const val gsonConverter = "2.9.0"
+
+    // chuck interceptor
+    const val chuckInterceptor = "1.1.0"
+
 }
