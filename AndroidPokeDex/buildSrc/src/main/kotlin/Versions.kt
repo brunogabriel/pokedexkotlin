@@ -7,4 +7,7 @@ object Versions {
     const val appCompat = "1.2.0"
     const val coreKtx = "1.3.2"
     const val material = "1.3.0"
+
+    // hilt
+    const val hilt = "2.35"
 }

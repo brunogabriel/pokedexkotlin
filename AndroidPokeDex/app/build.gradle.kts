@@ -28,5 +28,7 @@ android {
 
 dependencies {
     implementation(AppDependencies.androidLibraries)
+    implementation(AppDependencies.hiltLibraries)
+    kapt(AppDependencies.hiltCompilers)
 }
 
