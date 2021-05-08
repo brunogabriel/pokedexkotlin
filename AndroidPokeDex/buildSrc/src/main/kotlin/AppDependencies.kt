@@ -29,6 +29,10 @@ object AppDependencies {
     private const val gsonConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.gsonConverter}"
 
+    // ui
+    private const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    private const val palette = "androidx.palette:palette-ktx:${Versions.palette}"
+
     // chuck
     const val debugChuckInterceptor = "com.readystatesoftware.chuck:library:${Versions.chuckInterceptor}"
     const val releaseChuckInterceptor = "com.readystatesoftware.chuck:library-no-op:${Versions.chuckInterceptor}"
@@ -50,4 +54,7 @@ object AppDependencies {
     // network libraries
     val networkLibraries =
         listOf(retrofit, rxAdapter, loggingInterceptor, rxAdapterJava, gsonConverter)
+
+    // ui libraries
+    val uiLibraries = listOf(picasso, palette)
 }

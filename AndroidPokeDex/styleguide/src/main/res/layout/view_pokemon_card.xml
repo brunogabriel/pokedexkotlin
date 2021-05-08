@@ -17,11 +17,11 @@
 
             <TextView
                 android:id="@+id/pokemonNameTextView"
-                style="@style/PokeDex.Text.Headline1"
+                style="@style/PokeDex.Text.Headline3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/design_margin_xl"
-                android:layout_marginTop="@dimen/design_margin_xxxl"
+                android:layout_marginStart="@dimen/design_margin_l"
+                android:layout_marginTop="@dimen/design_margin_l"
                 android:textColor="@color/color_white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,21 +30,18 @@
 
             <io.github.brunogabriel.styleguide.components.TagView
                 android:id="@+id/pokemonTypeOneTagView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/design_margin_m"
-                app:layout_constraintEnd_toStartOf="@+id/pokemonImageView"
+                android:layout_marginTop="@dimen/design_margin_l"
                 app:layout_constraintStart_toStartOf="@+id/pokemonNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/pokemonNameTextView" />
 
             <io.github.brunogabriel.styleguide.components.TagView
                 android:id="@+id/pokemonTypeTwoTagView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/design_margin_m"
-                android:layout_marginEnd="@dimen/design_margin_m"
                 android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@+id/pokemonImageView"
                 app:layout_constraintStart_toStartOf="@+id/pokemonTypeOneTagView"
                 app:layout_constraintTop_toBottomOf="@+id/pokemonTypeOneTagView"
                 tools:visibility="visible" />
@@ -53,20 +50,19 @@
                 android:id="@+id/pokemonImageView"
                 android:layout_width="@dimen/design_pokemon_card_view_image_size"
                 android:layout_height="@dimen/design_pokemon_card_view_image_size"
-                android:layout_marginEnd="@dimen/design_margin_xl"
-                android:layout_marginBottom="@dimen/design_margin_xl"
+                android:layout_marginEnd="@dimen/design_margin_l"
+                android:layout_marginBottom="@dimen/design_margin_l"
                 android:contentDescription="@null"
-                android:src="@drawable/bulbasaur"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/pokemonNumberTextView"
-                style="@style/PokeDex.Text.Headline2"
+                style="@style/PokeDex.Text.Headline4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/design_margin_xl"
-                android:layout_marginEnd="@dimen/design_margin_xl"
+                android:layout_marginTop="@dimen/design_margin_m"
+                android:layout_marginEnd="@dimen/design_margin_l"
                 android:textColor="@color/color_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

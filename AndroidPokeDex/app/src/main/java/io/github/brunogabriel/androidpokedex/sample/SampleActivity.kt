@@ -19,7 +19,7 @@ class SampleActivity : AppCompatActivity() {
             PokemonCardViewModel(
                 name = "Bulbasaur",
                 number = "#001",
-                imageUrl = "url",
+                imageUrl = "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails-compressed/001.png",
                 type1 = "Grass",
                 type2 = "Poison"
             )
@@ -29,7 +29,7 @@ class SampleActivity : AppCompatActivity() {
             PokemonCardViewModel(
                 name = "Charmander",
                 number = "#004",
-                imageUrl = "url",
+                imageUrl = "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/thumbnails-compressed/004.png",
                 type1 = "Fire",
                 type2 = null
             )
