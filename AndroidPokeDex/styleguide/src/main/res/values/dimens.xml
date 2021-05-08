@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- icons -->
+    <dimen name="design_icon_size">24dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="design_margin_s">4dp</dimen>
+    <dimen name="design_margin_m">8dp</dimen>
+    <dimen name="design_margin_l">16dp</dimen>
+    <dimen name="design_margin_xl">24dp</dimen>
+    <dimen name="design_margin_xxl">32dp</dimen>
+    <dimen name="design_margin_xxxl">64dp</dimen>
+
+    <!-- padding -->
+    <dimen name="design_padding_s">4dp</dimen>
+    <dimen name="design_padding_m">8dp</dimen>
+    <dimen name="design_padding_l">16dp</dimen>
+    <dimen name="design_padding_xl">24dp</dimen>
+    <dimen name="design_padding_xxl">32dp</dimen>
+    <dimen name="design_padding_xxxl">64dp</dimen>
+
+    <!-- corner radius -->
+    <dimen name="design_corner_radius_s">4dp</dimen>
+    <dimen name="design_corner_radius_m">8dp</dimen>
+    <dimen name="design_corner_radius_l">16dp</dimen>
+    <dimen name="design_corner_radius_xl">32dp</dimen>
+    <dimen name="design_corner_radius_xxl">64dp</dimen>
+
+    <!-- elevation -->
+    <dimen name="design_elevation_none">0dp</dimen>
+    <dimen name="design_elevation_s">2dp</dimen>
+    <dimen name="design_elevation_m">4dp</dimen>
+    <dimen name="design_elevation_l">8dp</dimen>
+</resources>

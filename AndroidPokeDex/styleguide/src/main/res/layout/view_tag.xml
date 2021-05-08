@@ -7,16 +7,18 @@
         android:id="@+id/tagCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="100dp"
-        app:cardCornerRadius="64dp"
-        app:cardElevation="0dp">
+        android:minWidth="@dimen/design_tag_view_min_width"
+        app:cardCornerRadius="@dimen/design_corner_radius_xxl"
+        app:cardElevation="@dimen/design_elevation_none">
 
         <TextView
             android:id="@+id/tagTextView"
+            style="@style/PokeDex.Text.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="8dp"
+            android:padding="@dimen/design_padding_m"
+            android:textColor="@color/white"
             tools:text="Fire" />
 
     </androidx.cardview.widget.CardView>
