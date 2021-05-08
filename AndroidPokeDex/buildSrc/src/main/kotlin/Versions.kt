@@ -26,4 +26,9 @@ object Versions {
     // chuck interceptor
     const val chuckInterceptor = "1.1.0"
 
+    // picasso
+    const val picasso = "2.71828"
+
+    // palette
+    const val palette = "1.0.0"
 }

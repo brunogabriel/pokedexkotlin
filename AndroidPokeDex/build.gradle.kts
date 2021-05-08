@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 import org.jetbrains.kotlin.gradle.internal.CacheImplementation
 
 buildscript {
+    val kotlin_version by extra("1.4.31")
     repositories {
         google()
         jcenter()

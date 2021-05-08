@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tagCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/design_tag_view_min_width"
+        app:cardCornerRadius="@dimen/design_corner_radius_xxl"
+        app:cardElevation="@dimen/design_elevation_none">
+
+        <TextView
+            android:id="@+id/tagTextView"
+            style="@style/PokeDex.Text.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/design_padding_m"
+            android:textColor="@color/white"
+            tools:text="Fire" />
+
+    </androidx.cardview.widget.CardView>
+</layout>
+

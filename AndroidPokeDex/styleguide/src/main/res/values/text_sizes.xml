@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="design_text_size_s">12sp</dimen>
+    <dimen name="design_text_size_m">14sp</dimen>
+    <dimen name="design_text_size_l">18sp</dimen>
+    <dimen name="design_text_size_xl">24dp</dimen>
+    <dimen name="design_text_size_xxl">32dp</dimen>
+</resources>
