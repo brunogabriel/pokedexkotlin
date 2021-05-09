@@ -31,4 +31,7 @@ object Versions {
 
     // palette
     const val palette = "1.0.0"
+
+    // room
+    const val room = "2.3.0"
 }
