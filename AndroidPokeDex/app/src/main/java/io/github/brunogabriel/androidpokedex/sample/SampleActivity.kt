@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import io.github.brunogabriel.androidpokedex.R
+import io.github.brunogabriel.pokemonlist.presentation.activity.PokemonListActivity
 import io.github.brunogabriel.styleguide.components.models.PokemonCardViewModel
 import kotlinx.android.synthetic.main.activity_sample.*
 
@@ -34,5 +35,13 @@ class SampleActivity : AppCompatActivity() {
                 type2 = null
             )
         )
+
+        card1.setOnClickListener {
+            PokemonListActivity.start(this)
+        }
+
+        card2.setOnClickListener {
+            PokemonListActivity.start(this)
+        }
     }
 }

@@ -42,6 +42,10 @@ object AppDependencies {
     private const val roomRx = "androidx.room:room-rxjava2:${Versions.room}"
     private const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 
+    // other ktx
+    private const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
+    private const val lifecycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleKtx}"
+
     /**
      * Libraries
      */
@@ -66,4 +70,7 @@ object AppDependencies {
     // room
     val roomLibraries = listOf(room, roomRx)
     val roomCompilers = listOf(roomCompiler)
+
+    // other ktx
+    val ktxLibraries = listOf(fragmentKtx, lifecycleKtx)
 }

@@ -31,4 +31,7 @@
     <dimen name="design_elevation_s">2dp</dimen>
     <dimen name="design_elevation_m">4dp</dimen>
     <dimen name="design_elevation_l">8dp</dimen>
+
+    <!-- toolbar -->
+    <dimen name="design_toolbar_height">56dp</dimen>
 </resources>

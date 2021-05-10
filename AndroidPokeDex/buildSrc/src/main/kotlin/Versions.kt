@@ -34,4 +34,8 @@ object Versions {
 
     // room
     const val room = "2.3.0"
+
+    // other ktx
+    const val fragmentKtx = "1.3.3"
+    const val lifecycleKtx = "2.3.1"
 }

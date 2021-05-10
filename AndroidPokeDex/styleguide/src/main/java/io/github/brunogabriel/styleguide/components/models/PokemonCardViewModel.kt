@@ -1,5 +1,6 @@
 package io.github.brunogabriel.styleguide.components.models
 
+// TODO: Refactoring to rename
 data class PokemonCardViewModel(
     val name: String,
     val number: String,

@@ -9,6 +9,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.brunogabriel.network.BuildConfig
+import io.github.brunogabriel.network.di.annotations.BaseUrlQualifier
+import io.github.brunogabriel.network.di.annotations.ChuckInterceptorQualifier
+import io.github.brunogabriel.network.di.annotations.LoggingInterceptorQualifier
 import io.github.brunogabriel.shared.rx.ApplicationSchedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -26,25 +29,25 @@ object NetworkModule {
     private const val READ_TIMEOUT = 60L
     private const val WRITE_TIMEOUT = 60L
 
+    @BaseUrlQualifier
     @Provides
-    @Named("BaseUrl")
     fun providesBaseUrl(): String = BuildConfig.API_URL
 
+    @LoggingInterceptorQualifier
     @Provides
-    @Named("LoggingInterceptor")
     fun providesLoggingInterceptor(): Interceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
+    @ChuckInterceptorQualifier
     @Provides
-    @Named("ChuckInterceptor")
     fun providesChuckInterceptor(@ApplicationContext context: Context): Interceptor =
         ChuckInterceptor(context)
 
     @Provides
     fun providesOkHttpClient(
-        @Named("LoggingInterceptor")
+        @LoggingInterceptorQualifier
         loggingInterceptor: Interceptor,
-        @Named("ChuckInterceptor")
+        @ChuckInterceptorQualifier
         chuckInterceptor: Interceptor,
     ): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
@@ -58,7 +61,8 @@ object NetworkModule {
     @Provides
     fun providesRetrofit(
         okHttpClient: OkHttpClient,
-        @Named("BaseUrl") baseUrl: String,
+        @BaseUrlQualifier
+        baseUrl: String,
         applicationSchedulers: ApplicationSchedulers
     ): Retrofit =
         Retrofit.Builder()

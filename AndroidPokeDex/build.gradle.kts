@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 import org.jetbrains.kotlin.gradle.internal.CacheImplementation
 
 buildscript {
-    val kotlin_version by extra("1.4.31")
     repositories {
         google()
         jcenter()
@@ -70,6 +69,10 @@ fun Project.configureAndroid() {
             targetCompatibility = JavaVersion.VERSION_1_8
         }
 
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8.toString()
+        }
+
         testOptions {
             unitTests.isIncludeAndroidResources = true
             unitTests.isReturnDefaultValues = true
@@ -122,3 +125,6 @@ fun Project.configureAndroidLibrary() {
         }
     }
 }
+
+fun BaseExtension.kotlinOptions(configure: org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions.() -> Unit): Unit =
+    (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
