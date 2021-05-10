@@ -37,6 +37,11 @@ object AppDependencies {
     const val debugChuckInterceptor = "com.readystatesoftware.chuck:library:${Versions.chuckInterceptor}"
     const val releaseChuckInterceptor = "com.readystatesoftware.chuck:library-no-op:${Versions.chuckInterceptor}"
 
+    // room
+    private const val room = "androidx.room:room-runtime:${Versions.room}"
+    private const val roomRx = "androidx.room:room-rxjava2:${Versions.room}"
+    private const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+
     /**
      * Libraries
      */
@@ -57,4 +62,8 @@ object AppDependencies {
 
     // ui libraries
     val uiLibraries = listOf(picasso, palette)
+
+    // room
+    val roomLibraries = listOf(room, roomRx)
+    val roomCompilers = listOf(roomCompiler)
 }

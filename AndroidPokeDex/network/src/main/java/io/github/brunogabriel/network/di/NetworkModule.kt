@@ -22,6 +22,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    private const val CONNECTION_TIMEOUT = 60L
+    private const val READ_TIMEOUT = 60L
+    private const val WRITE_TIMEOUT = 60L
+
     @Provides
     @Named("BaseUrl")
     fun providesBaseUrl(): String = BuildConfig.API_URL
@@ -67,8 +71,4 @@ object NetworkModule {
                 )
             )
             .build()
-
-    private const val CONNECTION_TIMEOUT = 60L
-    private const val READ_TIMEOUT = 60L
-    private const val WRITE_TIMEOUT = 60L
 }

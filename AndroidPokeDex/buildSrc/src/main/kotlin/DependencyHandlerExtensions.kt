@@ -22,6 +22,16 @@ fun DependencyHandler.implementation(list: List<String>) {
     }
 }
 
+fun DependencyHandler.implementationCompiler(libraries: List<String>, compilers: List<String>) {
+    libraries.forEach {
+        add("implementation", it)
+    }
+
+    compilers.forEach {
+        add("kapt", it)
+    }
+}
+
 fun DependencyHandler.androidTestImplementation(list: List<String>) {
     list.forEach { dependency ->
         add("androidTestImplementation", dependency)
