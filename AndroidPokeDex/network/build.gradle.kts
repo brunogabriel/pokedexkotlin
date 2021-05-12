@@ -6,11 +6,12 @@ android {
 
 dependencies {
     project(ModuleDependencies.shared)
+
+    hiltImplementation()
+
     implementation(AppDependencies.androidLibraries)
     implementation(AppDependencies.rxLibraries)
     implementation(AppDependencies.networkLibraries)
-    implementation(AppDependencies.hiltLibraries)
-    kapt(AppDependencies.hiltCompilers)
 
     debugApi (AppDependencies.debugChuckInterceptor)
     releaseApi (AppDependencies.releaseChuckInterceptor)

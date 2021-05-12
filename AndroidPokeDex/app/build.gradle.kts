@@ -28,9 +28,10 @@ android {
 
 dependencies {
     project(ModuleDependencies.modules)
+
+    hiltImplementation()
+
     implementation(AppDependencies.rxLibraries)
     implementation(AppDependencies.androidLibraries)
-    implementation(AppDependencies.hiltLibraries)
-    kapt(AppDependencies.hiltCompilers)
 }
 

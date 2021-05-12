@@ -7,9 +7,11 @@ dependencies {
             ModuleDependencies.database
         )
     )
+
+    hiltImplementation()
+
     implementation(AppDependencies.androidLibraries)
     implementation(AppDependencies.uiLibraries)
     implementation(AppDependencies.rxLibraries)
-    implementationCompiler(AppDependencies.hiltLibraries, AppDependencies.hiltCompilers)
     implementation(AppDependencies.ktxLibraries)
 }
