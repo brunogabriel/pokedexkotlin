@@ -8,7 +8,7 @@ import io.github.brunogabriel.pokedexkotlin.main.di.MainModule
 @Module(
     includes = [
         MainModule::class,
-        FakeSplashModule::class
+        FakeSplashModule::class // TODO necessary?
     ]
 )
 abstract class FeaturesModule
