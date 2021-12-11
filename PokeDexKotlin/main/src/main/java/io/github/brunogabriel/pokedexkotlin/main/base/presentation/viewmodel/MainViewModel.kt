@@ -1,4 +1,4 @@
-package io.github.brunogabriel.pokedexkotlin.main.presentation.viewmodel
+package io.github.brunogabriel.pokedexkotlin.main.base.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

@@ -13,4 +13,6 @@ object Versions {
     const val kotlinxSerialization = "1.3.1"
     const val kotlinxSerializationConverter = "0.8.0"
     const val chuck = "3.5.2"
+    const val fragmentKtx = "1.4.0"
+    const val coroutines = "1.3.9"
 }

@@ -3,7 +3,7 @@
     package="io.github.brunogabriel.pokedexkotlin.main">
 
     <application>
-        <activity android:name=".presentation.activity.MainActivity" />
+        <activity android:name="io.github.brunogabriel.pokedexkotlin.main.base.presentation.activity.MainActivity" />
     </application>
 
 </manifest>
