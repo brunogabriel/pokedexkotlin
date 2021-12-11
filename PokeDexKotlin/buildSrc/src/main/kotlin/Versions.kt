@@ -7,4 +7,5 @@ object Versions {
     const val ktx = "1.7.0"
     const val appcompat = "1.4.0"
     const val material = "1.4.0"
+    const val dagger = "2.40.5"
 }
