@@ -31,4 +31,9 @@ object Dependencies {
 
     // Coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
+    // database
+    const val room = "androidx.room:room-runtime:${Versions.room}"
+    const val roomAnnotationProcessor = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 }

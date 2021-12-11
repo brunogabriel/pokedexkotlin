@@ -2,7 +2,7 @@ package io.github.brunogabriel.pokedexkotlin.main.pokelist.presentation.viewmode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.github.brunogabriel.pokedexkotlin.main.pokelist.data.models.Pokemon
+import io.github.brunogabriel.pokedexkotlin.main.pokelist.domain.models.PokemonVO
 import io.github.brunogabriel.pokedexkotlin.main.pokelist.domain.PokemonListUseCase
 import io.github.brunogabriel.pokedexkotlin.shared.api.ApiResponse
 import io.github.brunogabriel.pokedexkotlin.shared.coroutines.AppDispatchers
@@ -18,7 +18,7 @@ class PokemonListViewModel @Inject constructor(
     private var offset = 0
     private var limit = 100
 
-    val pokemonsState = MutableStateFlow<ApiResponse<List<Pokemon>>>(
+    val pokemonsState = MutableStateFlow<ApiResponse<List<PokemonVO>>>(
         ApiResponse.None
     )
 

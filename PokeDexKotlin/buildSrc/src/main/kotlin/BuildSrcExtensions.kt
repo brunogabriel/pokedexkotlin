@@ -17,3 +17,10 @@ fun DependencyHandler.okHttp() {
     add("implementation", Dependencies.okHttp)
     add("implementation", Dependencies.loggingInterceptor)
 }
+
+fun DependencyHandler.room() {
+    add("implementation", Dependencies.room)
+    add("kapt", Dependencies.roomAnnotationProcessor)
+    add("implementation", Dependencies.roomKtx)
+
+}
