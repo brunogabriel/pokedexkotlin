@@ -8,4 +8,9 @@ object Versions {
     const val appcompat = "1.4.0"
     const val material = "1.4.0"
     const val dagger = "2.40.5"
+    const val retrofit = "2.9.0"
+    const val okHttp = "4.9.0"
+    const val kotlinxSerialization = "1.3.1"
+    const val kotlinxSerializationConverter = "0.8.0"
+    const val chuck = "3.5.2"
 }

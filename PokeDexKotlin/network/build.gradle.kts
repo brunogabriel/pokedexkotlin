@@ -13,27 +13,23 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    defaultConfig {
+        buildConfigField("String", "BASE_URL", "\"https://pokeapi.co/api/v2/\"")
+    }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 }
 
 dependencies {
-    // Modules
-    implementation(project(Modules.shared))
-    implementation(project(Modules.network))
-
-    // dependencies
-    dagger()
-    okHttp()
     implementation(Dependencies.coreKtx)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.material)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.kotlinxSerialization)
+    implementation(Dependencies.kotlinxSerializationConverter)
+    dagger()
+    chuck()
+    okHttp()
 
-    // test dependencies
     testImplementation(TestDependencies.junit)
-    androidTestImplementation(TestDependencies.androidxJunit)
-    androidTestImplementation(TestDependencies.espresso)
 }

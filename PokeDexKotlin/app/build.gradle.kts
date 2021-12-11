@@ -38,16 +38,18 @@ android {
 }
 
 dependencies {
+    // Modules
+    implementation(project(Modules.main))
+    implementation(project(Modules.shared))
+    implementation(project(Modules.network))
+
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
+    implementation(Dependencies.retrofit)
     dagger()
 
     testImplementation(TestDependencies.junit)
     androidTestImplementation(TestDependencies.androidxJunit)
     androidTestImplementation(TestDependencies.espresso)
-
-    // Modules
-    implementation(project(Modules.main))
-    implementation(project(Modules.shared))
 }
