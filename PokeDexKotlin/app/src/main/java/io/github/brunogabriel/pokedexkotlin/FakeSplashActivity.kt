@@ -3,7 +3,7 @@ package io.github.brunogabriel.pokedexkotlin
 import android.content.Intent
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
-import io.github.brunogabriel.pokedexkotlin.main.presentation.activity.MainActivity
+import io.github.brunogabriel.pokedexkotlin.main.base.presentation.activity.MainActivity
 
 class FakeSplashActivity : DaggerAppCompatActivity() {
     // TODO: Remove it in future

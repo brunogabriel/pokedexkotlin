@@ -2,9 +2,11 @@ object Dependencies {
     // Android
     const val coreKtx = "androidx.core:core-ktx:${Versions.ktx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 
     // UI
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
     // Dagger
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
@@ -26,4 +28,7 @@ object Dependencies {
     const val okHttpBom = "com.squareup.okhttp3:okhttp-bom:${Versions.okHttp}"
     const val okHttp = "com.squareup.okhttp3:okhttp"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+
+    // Coroutines
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }

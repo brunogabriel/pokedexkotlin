@@ -16,6 +16,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -28,9 +32,11 @@ dependencies {
     okHttp()
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
+    implementation(Dependencies.fragmentKtx)
     implementation(Dependencies.material)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.kotlinxSerialization)
+    implementation(Dependencies.coroutines)
 
     // test dependencies
     testImplementation(TestDependencies.junit)

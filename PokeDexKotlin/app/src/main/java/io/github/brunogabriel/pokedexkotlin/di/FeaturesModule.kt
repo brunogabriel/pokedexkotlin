@@ -4,10 +4,12 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import io.github.brunogabriel.pokedexkotlin.FakeSplashActivity
 import io.github.brunogabriel.pokedexkotlin.main.di.MainModule
+import io.github.brunogabriel.pokedexkotlin.shared.di.SharedModule
 
 @Module(
     includes = [
         MainModule::class,
+        SharedModule::class,
         FakeSplashModule::class // TODO necessary?
     ]
 )
