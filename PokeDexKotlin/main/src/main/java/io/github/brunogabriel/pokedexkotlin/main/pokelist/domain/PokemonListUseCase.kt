@@ -9,7 +9,7 @@ internal class PokemonListUseCaseImpl @Inject constructor(
 ) : PokemonListUseCase {
     override suspend fun fetchAll(limit: Int, offset: Int, forceRefresh: Boolean) =
         repository.getPokemons(limit, offset, forceRefresh)
-            .result.map(::pokemonResponseToPokemon)
+            .results.map(::pokemonResponseToPokemon)
 }
 
 interface PokemonListUseCase {

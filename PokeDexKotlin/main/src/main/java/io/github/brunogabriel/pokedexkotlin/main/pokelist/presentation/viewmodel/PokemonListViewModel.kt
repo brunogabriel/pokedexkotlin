@@ -25,12 +25,10 @@ class PokemonListViewModel @Inject constructor(
     fun loadData() {
         viewModelScope.launch {
             pokemonsState.value = ApiResponse.Loading
-
             try {
                 val response = withContext(appDispatchers.io) {
                     useCase.fetchAll(limit, offset, false)
                 }
-
                 pokemonsState.value = ApiResponse.Success(response)
             } catch (exception: Exception) {
                 pokemonsState.value = ApiResponse.Error(exception)

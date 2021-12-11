@@ -6,6 +6,7 @@ object Dependencies {
 
     // UI
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
     // Dagger
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
