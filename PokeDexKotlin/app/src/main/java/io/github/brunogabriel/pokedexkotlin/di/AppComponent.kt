@@ -6,13 +6,16 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.github.brunogabriel.pokedexkotlin.PokeDexApplication
+import io.github.brunogabriel.pokedexkotlin.network.di.NetworkModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        FeaturesModule::class
+        AppModule::class,
+        FeaturesModule::class,
+        NetworkModule::class
     ]
 )
 interface AppComponent : AndroidInjector<PokeDexApplication> {
