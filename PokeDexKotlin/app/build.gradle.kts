@@ -49,4 +49,5 @@ dependencies {
 
     // Modules
     implementation(project(Modules.main))
+    implementation(project(Modules.shared))
 }

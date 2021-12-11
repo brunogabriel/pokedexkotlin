@@ -18,17 +18,13 @@ android {
 }
 
 dependencies {
-    // Modules
-    implementation(project(Modules.shared))
-
-    // dependencies
-    dagger()
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
 
-    // test dependencies
     testImplementation(TestDependencies.junit)
     androidTestImplementation(TestDependencies.androidxJunit)
     androidTestImplementation(TestDependencies.espresso)
+
+    dagger()
 }
