@@ -4,25 +4,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="PLATFORM" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core/core-app" />
-            <option value="$PROJECT_DIR$/core/core-test" />
-            <option value="$PROJECT_DIR$/core/style-guide" />
-            <option value="$PROJECT_DIR$/data" />
-            <option value="$PROJECT_DIR$/data/data-core" />
-            <option value="$PROJECT_DIR$/data/data-local" />
-            <option value="$PROJECT_DIR$/data/data-remote" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/pokemon-list" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
