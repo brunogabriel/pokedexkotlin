@@ -30,6 +30,7 @@ dependencies {
     // dependencies
     dagger()
     okHttp()
+    room()
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.fragmentKtx)
